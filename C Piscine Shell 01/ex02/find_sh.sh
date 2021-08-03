@@ -1,2 +1,2 @@
 #/bin/sh
-basename $(find . -name "*.sh") | sed 's/.\{3\}$//'
+basename $(find . -name "*.sh") | sed -n 's/\.sh$//p'
