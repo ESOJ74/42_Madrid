@@ -1,0 +1,5 @@
+Credentials cache: API:047F6FFF-607F-47D0-B359-A2C407B2DE47
+        Principal: albferna@42MADRID.COM
+
+  Issued                Expires               Principal
+Aug  2 15:05:51 2021  Aug  3 01:05:51 2021  krbtgt/42MADRID.COM@42MADRID.COM
