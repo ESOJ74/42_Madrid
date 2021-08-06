@@ -1,0 +1,9 @@
+gcc -Wall -Werror -Wextra archivo.c            para ver errores que no aparecen al compilar
+
+printf("%lu\n", sizeof(c));                    para conocer tamaño de una variable
+
+man ascii                                      tabla ascii
+
+signed, unsigned                               para indicar si el octeto de una variable va con signo o no
+
+operadores bits &, |, ^, ~ 
