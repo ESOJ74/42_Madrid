@@ -1,32 +1,9 @@
 #include <unistd.h>
 #include "ft_putchar.c"
 
-void ft_line(int x, char extremo, char medio)
-{
-	int i = 2;
-	
-	ft_putchar(extremo);
-    
-	while(i < x)
-	{
-		ft_putchar(medio);
-		i++;
-	}
-    
-	ft_putchar(extremo);
-}
+void ft_line(int x, char extremo, char medio);
+void ft_char(int x);
 
-void ft_char(int x)
-{
-	int i = 2;
-	
-	while(i < x)
-	{
-		ft_putchar('|');
-		ft_putchar('\n');	
-		i++;				
-	}
-}
 
 void rush(int x, int y)
 {
@@ -66,6 +43,33 @@ void rush(int x, int y)
 		
 		ft_line(x, 'o', '-');
 		ft_putchar('\n');
+	}
+}
+
+void ft_line(int x, char extremo, char medio)
+{
+	int i = 2;
+	
+	ft_putchar(extremo);
+    
+	while(i < x)
+	{
+		ft_putchar(medio);
+		i++;
+	}
+    
+	ft_putchar(extremo);
+}
+
+void ft_char(int x)
+{
+	int i = 2;
+	
+	while(i < x)
+	{
+		ft_putchar('|');
+		ft_putchar('\n');	
+		i++;				
 	}
 }
 
