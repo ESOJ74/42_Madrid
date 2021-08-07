@@ -1,8 +1,5 @@
-
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
+#include <unistd.h>
+#include "ft_putchar.c"
 
 
 void	ft_print_line(int width, char begin_symbol, char middle_symbol, char end_symbol)
