@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr                                          :+:      :+:    :+:   */
+/*   ft_rev_int_tab                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcuenca <jcuenca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,18 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void ft_rev_int_tab(int *tab, int size);
-
-void	ft_rev_int_tab(int *tab, int size)
+void    ft_rev_int_tab(int *tab, int size)
 {
-	int		i;
-	char	temp;
+    int    i;
+    int    aux;
 
-	i = -1;
-	while (++i < --size)
-	{
-		temp = tab[i];
-		tab[i] = tab[size];
-		tab[size] = temp;
-	}
+    i = 0;
+    while (i < size / 2)
+    {
+        aux = tab[i];
+        tab[i] = tab[size - i - 1];
+        tab[size - i - 1] = aux;
+        i++;
+    }
 }

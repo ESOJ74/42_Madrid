@@ -167,7 +167,7 @@ int		main(void)
 		
 	//ft_rev_int_tab
 	system("clear");
-	int	tab[] = {1,2,3,4,5};		
+	int	tab[] = {1,2,3,4,5};
 	ft_rev_int_tab(tab, 5);
 	printf("ex07 : tab[] = {1,2,3,4,5}; ft_rev_int_tab(tab, 5)\n\nLa salida debe ser [5, 4, 3, 2, 1]\nSalida : ");
 	int cont;
@@ -197,9 +197,11 @@ int		main(void)
 		printf("%d, ",tab2[cont]);
 		cont++;
 	}
-	printf("%d]\n",tab2[7]);	
+	printf("%d]\n",tab2[7]);
+    
+    puntos = puntos + esCorrecto();
 	
-	printf("\n Correctos %d de 8 ejercicios\n\n\n",puntos);
+	printf("\n Correctos %d de 9 ejercicios\n\n\n",puntos);
 	
 	return (0);
 }
