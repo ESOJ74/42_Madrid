@@ -171,7 +171,7 @@ int 	main(void)
 	
 	
 	
-	printf("\n\n\nCorrectos %d de 11 ejercicios\n\n\n",puntos);							
+	printf("\n\n\nCorrectos %d de 12 ejercicios\n\n\n",puntos);							
 	return (0);								
 }
 

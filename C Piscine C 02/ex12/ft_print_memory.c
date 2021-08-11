@@ -12,24 +12,24 @@
 
 #include <unistd.h>
 
-void		ft_putchar(char c)
+void	ft_putchar(char c)
 {
 	write(1, &c, 1);
 }
 
 void	ft_print_address(int nbr, char *hex)
 {
-	int		add[9];											
-	int 	i;
-	int		j;
-	int 	base_type;
+	int	add[9];
+	int	i;
+	int	j;
+	int	base_type;
 
 	i = 0;
-	j = 8; 
+	j = 8;
 	base_type = 16;
-	if(nbr == 0)
+	if (nbr == 0)
 	{
-		while(j-- > 0)
+		while (j-- > 0)
 			ft_putchar('0');
 	}
 	else
@@ -41,7 +41,7 @@ void	ft_print_address(int nbr, char *hex)
 			i++;
 		}
 		j = (8 - i);
-		while(j-- > 0)
+		while (j-- > 0)
 			ft_putchar('0');
 		while (i > 0)
 			ft_putchar(hex[add[--i]]);
@@ -57,7 +57,6 @@ void	*ft_print_memory(void *addr, unsigned int size)
 	unsigned char	*p;
 	char			*hex;
 
-
 	i = 0;
 	p = (unsigned char *)addr;
 	hex = "0123456789abcdef";
@@ -69,7 +68,7 @@ void	*ft_print_memory(void *addr, unsigned int size)
 		{
 			ft_putchar((char)hex[(*(p + i + j) / 16) % 16]);
 			ft_putchar((char)hex[*(p + i + j) % 16]);
-			if (j % 2)										
+			if (j % 2)
 				ft_putchar(' ');
 			j++;
 		}
@@ -95,4 +94,3 @@ void	*ft_print_memory(void *addr, unsigned int size)
 	}
 	return (addr + i);
 }
-

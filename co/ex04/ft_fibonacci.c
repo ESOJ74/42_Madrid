@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ft.c                                            :+:      :+:    :+:   */
+/*   ft_fibonacci.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcuenca <jcuenca@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rsoto-in <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/08 07:06:00 by jcuenca           #+#    #+#             */
-/*   Updated: 2021/08/08 07:28:00 by jcuenca          ###   ########.fr       */
+/*   Created: 2021/08/10 21:41:34 by rsoto-in          #+#    #+#             */
+/*   Updated: 2021/08/11 09:03:02 by rsoto-in         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strcmp(char *s1, char *s2)
+int	ft_fibonacci(int index)
 {
-	while (*s1 && (*s1 == *s2))
-	{
-		s1++;
-		s2++;
-	}
-	return (*s1 - *s2);
+	int	n;
+
+	n = 0;
+	if (index < 0)
+		return (-1);
+	else if (index == 0)
+		return (0);
+	else if (index == 1)
+		return (1);
+	return (ft_fibonacci(index - 1) + ft_fibonacci(index - 2));
 }
