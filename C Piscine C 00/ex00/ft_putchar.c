@@ -6,8 +6,3 @@ void	juan(char c)
 {
 	write(1, &c, 1);
 }
-
-
-
-
-
