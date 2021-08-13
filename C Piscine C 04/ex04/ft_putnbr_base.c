@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy                                         :+:      :+:    :+:   */
+/*   ft_ft.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcuenca <jcuenca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,23 +10,58 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
+void		ft_putchar1(char c)
 {
-	unsigned int count;
-	unsigned int index;
+	write(1, &c, 1);
+}
 
-	count = 0;
-	index = 0;
-	while (src[count] != '\0')
-		count++;
-	if (size != 0)
+static int	ft_check_base(char *base)
+{
+	int	i;
+	int	z;
+
+	i = 0;
+	if (!base || !base[1])
+		return (0);
+	while (base[i])
 	{
-		while (src[index] != '\0' && index < (size - 1))
+		if (!((base[i] >= '0' && base[i] <= '9') || (base[i] >= 'a' \
+				&& base[i] <= 'z') || (base[i] >= 'A' && base[i] <= 'Z')))
+			return (0);
+		z = i + 1;
+		while (base[z])
 		{
-			dest[index] = src[index];
-			index++;
+			if (base[i] == base[z])
+				return (0);
+			z++;
 		}
-		dest[index] = '\0';
+		i++;
 	}
-	return (count);
+	return (i);
+}
+
+void		ft_putnbr_base(int nbr, char *base)
+{
+	int		i;
+	int		base_type;
+	int		n[16];
+
+	i = 0;
+	if ((base_type = ft_check_base(base)))
+	{
+		if (nbr < 0)
+		{
+			nbr = -nbr;
+			ft_putchar1('-');
+		}
+		while (nbr)
+		{
+			n[i] = nbr % base_type;
+			nbr /= base_type;
+			i++;
+		}
+		while (i > 0)
+			ft_putchar1(base[n[--i]]);
+	}
+	
 }

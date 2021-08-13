@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy                                         :+:      :+:    :+:   */
+/*   ft_ft.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcuenca <jcuenca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,23 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
+int	ft_recursive_power_recursive(int number, int power, int result)
 {
-	unsigned int count;
-	unsigned int index;
+	if (power-- > 0)
+		return (ft_recursive_power_recursive(number, power, result *= number));
+	return (result);
+}
 
-	count = 0;
-	index = 0;
-	while (src[count] != '\0')
-		count++;
-	if (size != 0)
-	{
-		while (src[index] != '\0' && index < (size - 1))
-		{
-			dest[index] = src[index];
-			index++;
-		}
-		dest[index] = '\0';
-	}
-	return (count);
+int	ft_recursive_power(int nb, int power)
+{
+	if (power < 0)
+		return (0);
+	return (ft_recursive_power_recursive(nb, power, 1));
 }

@@ -12,85 +12,69 @@
 
 #include <unistd.h>
 
-void	ft_putchar(char c)
+#define MAX_PAGE_SIZE 14
+
+void	ft_buffer_number(int number, int radix, int buffer[], int index)
 {
-	write(1, &c, 1);
+	if (number > radix - 1)
+		ft_buffer_number(number / radix, radix, buffer, index + 1);
+	buffer[index] = number % radix;
 }
 
-void	ft_print_address(int nbr, char *hex)
+void	ft_write_hex(unsigned int number, int radix, int char_count)
 {
-	int	add[9];
-	int	i;
-	int	j;
-	int	base_type;
+	int	buffer[MAX_PAGE_SIZE + 1];
+	int	index;
 
-	i = 0;
-	j = 8;
-	base_type = 16;
-	if (nbr == 0)
-	{
-		while (j-- > 0)
-			ft_putchar('0');
-	}
+	index = -1;
+	while (index++ < MAX_PAGE_SIZE)
+		buffer[index] = 0;
+	ft_buffer_number(number, radix, buffer, 0);
+	index = -1;
+	while (index++ < char_count)
+		write(1, &"0123456789abcdefgh"[buffer[char_count - index]], 1);
+}
+
+void	ft_write_safe_char(char *c)
+{
+	if (*c >= ' ' && *c != 127)
+		write(1, c, 1);
 	else
+		write(1, &".", 1);
+}
+
+void	ft_print_memory_at(void *start_addr, unsigned int size, char *curr_addr)
+{
+	int index;
+
+	ft_write_hex((unsigned int)curr_addr, 16, MAX_PAGE_SIZE);
+	write(1, &": ", 2);
+	index = 0;
+	while (index++ < 16)
 	{
-		while (nbr)
-		{
-			add[i] = nbr % base_type;
-			nbr /= base_type;
-			i++;
-		}
-		j = (8 - i);
-		while (j-- > 0)
-			ft_putchar('0');
-		while (i > 0)
-			ft_putchar(hex[add[--i]]);
+		if (start_addr + size <= (void *)(curr_addr + index - 1))
+			write(1, &"  ", 2);
+		else
+			ft_write_hex((unsigned char)*(curr_addr + index - 1), 16, 1);
+		if (index % 2 == 0)
+			write(1, &" ", 1);
 	}
-	ft_putchar(':');
-	ft_putchar(' ');
+	index = 0;
+	while (index++ < 16)
+		if (start_addr + size > (void *)(curr_addr + index - 1))
+			ft_write_safe_char((char *)curr_addr + index - 1);
 }
 
 void	*ft_print_memory(void *addr, unsigned int size)
 {
-	unsigned int	i;
-	unsigned int	j;
-	unsigned char	*p;
-	char			*hex;
+	char	*curr_addr;
 
-	i = 0;
-	p = (unsigned char *)addr;
-	hex = "0123456789abcdef";
-	while (i < size)
+	curr_addr = (char *)addr;
+	while ((void *)curr_addr < (addr + size))
 	{
-		j = 0;
-		ft_print_address(i, hex);
-		while (j < 16 && i + j < size)
-		{
-			ft_putchar((char)hex[(*(p + i + j) / 16) % 16]);
-			ft_putchar((char)hex[*(p + i + j) % 16]);
-			if (j % 2)
-				ft_putchar(' ');
-			j++;
-		}
-		while (j < 16)
-		{
-			ft_putchar(' ');
-			ft_putchar(' ');
-			if (j % 2)
-				ft_putchar(' ');
-			j++;
-		}
-		j = 0;
-		while (j < 16 && i + j < size)
-		{
-			if (*(p + i + j) >= 32 && *(p + i + j) <= 126)
-				ft_putchar((char)*(p + i + j));
-			else
-				ft_putchar('.');
-			j++;
-		}
-		ft_putchar('\n');
-		i += 16;
+		ft_print_memory_at(addr, size, curr_addr);
+		write(1, &"\n", 1);
+		curr_addr += 16;
 	}
-	return (addr + i);
+	return (addr);
 }

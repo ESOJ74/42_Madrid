@@ -12,36 +12,35 @@
 
 #include <unistd.h>
 
-void		ft_putchar(char c)
+void	ft_putchar(char c)
 {
 	write(1, &c, 1);
 }
 
-
-void	ft_digit_hex(char c)
+int	is_char_printable(char c)
 {
-	if (c < 10)
-		ft_putchar('0' + c);	
-	else
-		ft_putchar('a' - 10 + c);
-}
-
-void	print(char c)
-{
-	if ((c >= 32) && (c <= 126))
-		ft_putchar(c);
-	else
-	{
-		if (c < 0)
-			c = c + 256;
-		ft_putchar('\\');
-		ft_digit_hex(c / 16);
-		ft_digit_hex(c % 16);
-	}
+	return (c >= ' ' && c != 127);
 }
 
 void	ft_putstr_non_printable(char *str)
 {
-	while (*str)
-		print(*(str++));
+	int				index;
+	unsigned char	current;
+
+	index = 0;
+	while (1)
+	{
+		current = str[index];
+		if (current == '\0')
+			break ;
+		if (is_char_printable(current))
+			ft_putchar(current);
+		else
+		{
+			ft_putchar('\\');
+			ft_putchar("0123456789abcdef"[current / 16]);
+			ft_putchar("0123456789abcdef"[current % 16]);
+		}
+		index++;
+	}
 }

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy                                         :+:      :+:    :+:   */
+/*   ft_ft.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcuenca <jcuenca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,23 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
+int	ft_atoi(char *str)
 {
-	unsigned int count;
-	unsigned int index;
+	int	sign;
+	int	num;
 
-	count = 0;
-	index = 0;
-	while (src[count] != '\0')
-		count++;
-	if (size != 0)
+	sign = 1;
+	num = 0;
+	while ((*str == ' ') || (*str == '\t') || (*str == '\n')
+		|| (*str == '\v') || (*str == '\f') || (*str == '\r'))
+		str++;
+	if (*str == '-')
+		sign = -1;
+	while ((*str == '-') || (*str == '+'))
+		str++;
+	while (*str >= '0' && *str <= '9')
 	{
-		while (src[index] != '\0' && index < (size - 1))
-		{
-			dest[index] = src[index];
-			index++;
-		}
-		dest[index] = '\0';
+		num = (num * 10) + ((int)*str - '0');
+		str++;
 	}
-	return (count);
+	return (num * sign);
 }

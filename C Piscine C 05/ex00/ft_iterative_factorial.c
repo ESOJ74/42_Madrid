@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy                                         :+:      :+:    :+:   */
+/*   ft_ft.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcuenca <jcuenca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,23 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
+int	ft_iterative_factorial(int nb)
 {
-	unsigned int count;
-	unsigned int index;
+	int	factorial;
+	int	index;
 
-	count = 0;
-	index = 0;
-	while (src[count] != '\0')
-		count++;
-	if (size != 0)
-	{
-		while (src[index] != '\0' && index < (size - 1))
-		{
-			dest[index] = src[index];
-			index++;
-		}
-		dest[index] = '\0';
-	}
-	return (count);
+	if (nb < 0)
+		return (0);
+	index = 1;
+	factorial = 1;
+	while (index < nb + 1)
+		factorial = factorial * index++;
+	return (factorial);
 }

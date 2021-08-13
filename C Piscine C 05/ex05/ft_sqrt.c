@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy                                         :+:      :+:    :+:   */
+/*   ft_ft.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcuenca <jcuenca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,23 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
+int	ft_sqrt(int nb)
 {
-	unsigned int count;
-	unsigned int index;
+	unsigned int		sqrt;
+	unsigned int		index;
 
-	count = 0;
+	if (nb < 0)
+		return (0);
+	if (nb <= 1)
+		return (nb);
 	index = 0;
-	while (src[count] != '\0')
-		count++;
-	if (size != 0)
-	{
-		while (src[index] != '\0' && index < (size - 1))
-		{
-			dest[index] = src[index];
-			index++;
-		}
-		dest[index] = '\0';
-	}
-	return (count);
+	while ((sqrt = index * index) <= (unsigned int)nb)
+		index++;
+	index -= 1;
+	return (index * index == (unsigned int)nb ? index : 0);
 }
