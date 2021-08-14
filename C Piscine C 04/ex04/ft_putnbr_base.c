@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void		ft_putchar1(char c)
+void	ft_putchar1(char c)
 {
 	write(1, &c, 1);
 }
@@ -40,14 +40,14 @@ static int	ft_check_base(char *base)
 	return (i);
 }
 
-void		ft_putnbr_base(int nbr, char *base)
+void	ft_putnbr_base(int nbr, char *base)
 {
 	int		i;
 	int		base_type;
 	int		n[16];
 
 	i = 0;
-	if ((base_type = ft_check_base(base)))
+	if ((base_type == ft_check_base(base)))
 	{
 		if (nbr < 0)
 		{
@@ -63,5 +63,4 @@ void		ft_putnbr_base(int nbr, char *base)
 		while (i > 0)
 			ft_putchar1(base[n[--i]]);
 	}
-	
 }

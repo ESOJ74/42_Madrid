@@ -10,33 +10,38 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
-
-void	print_solution(int board[4][4])
+int	col(int board[4][4], int col, int num)
 {
 	int	row;
-	int	col;
 
 	row = 0;
-	col = 0;
 	while (row < 4)
 	{
-		col = 0;
-		while (col < 4)
-		{
-			ft_putchar(board[row][col] + '0');
-			if (col == 3)
-				col++;
-			else
-				ft_putchar(' ');
-			col++;
-		}
-		ft_putchar('\n');
+		if (board[row][col] == num)
+			return (0);
 		row++;
 	}
+	return (1);
+}
+
+int	row(int board[4][4], int row, int num)
+{
+	int	col;
+
+	col = 0;
+	while (col < 4)
+	{
+		if (board[row][col] == num)
+			return (0);
+		col++;
+	}
+	return (1);
+}
+
+int	safe(int board[4][4], int r, int c, int num)
+{
+	if (((row(board, r, num)) && (col(board, c, num)) \
+			&& (board[r][c] == 0)))
+		return (1);
+	return (0);
 }

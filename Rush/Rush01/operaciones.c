@@ -10,33 +10,46 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+int	checkboard(int board[4][4], int *in_num);
+int	safe(int board[4][4], int r, int c, int num);
 
-void	ft_putchar(char c)
+int	zeros(int board[4][4], int *r, int *c)
 {
-	write(1, &c, 1);
+	*r = 0;
+	*c = 0;
+	while (*r < 4)
+	{
+		*c = 0;
+		while (*c < 4)
+		{
+			if (board[*r][*c] == 0)
+				return (1);
+			*c += 1;
+		}
+		*r += 1;
+	}
+	return (0);
 }
 
-void	print_solution(int board[4][4])
+int	operations(int board[4][4], int *input)
 {
 	int	row;
 	int	col;
+	int	n;
 
-	row = 0;
-	col = 0;
-	while (row < 4)
+	n = 1;
+	if ((zeros(board, &row, &col) == 0) && (checkboard(board, input) == 1))
+		return (1);
+	while (n <= 4)
 	{
-		col = 0;
-		while (col < 4)
+		if (safe(board, row, col, n))
 		{
-			ft_putchar(board[row][col] + '0');
-			if (col == 3)
-				col++;
-			else
-				ft_putchar(' ');
-			col++;
+			board[row][col] = n;
+			if (operations(board, input) == 1)
+				return (1);
+			board[row][col] = 0;
 		}
-		ft_putchar('\n');
-		row++;
+		n++;
 	}
+	return (0);
 }
