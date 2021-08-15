@@ -12,8 +12,8 @@
 
 unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 {
-	unsigned int count;
-	unsigned int index;
+	unsigned int	count;
+	unsigned int	index;
 
 	count = 0;
 	index = 0;

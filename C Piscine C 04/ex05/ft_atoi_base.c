@@ -89,8 +89,9 @@ int		ft_atoi_base(char *str, char *base)
 			sign *= -1;
 		str++;
 	}
-	while ((resolved = resolve_base(base, *str)) != -1)
+	while (resolve_base(base, *str) != -1)
 	{
+		resolved = resolve_base(base, *str);
 		res *= len;
 		res += resolved;
 		str++;

@@ -22,17 +22,7 @@ int		ft_strlen(char *str)
 	return (i);
 }
 
-int	string(char c, char *str)
-{
-	while (*str)
-	{
-		if (*str++ == c)
-			return (1);
-	}
-	return (0);
-}
-
-int	is_base(char *str)
+int	is_base_valid(char *str)
 {
 	char	*curr;
 	int		i;
@@ -43,9 +33,10 @@ int	is_base(char *str)
 		return (0);
 	while (*curr)
 	{
-		if (string(*curr, "\t\n\v\f\r "))
+		if (*curr == '\t' || *curr == '\n' || *curr == '\v' || *curr == '\f'
+			|| *curr == '\r' || *curr == ' ' || *curr == '+' || *curr == '-')
 			return (0);
-		curr++;		
+		curr++;
 	}
 	i = 0;
 	while (i < curr - str)
@@ -59,31 +50,31 @@ int	is_base(char *str)
 	return (1);
 }
 
-void	ft_putnbr_base_recursive(int nbr, char *base, int len)
+void	ft_putnbr_base_recursive(int number, char *base, int r)
 {
-	if (nbr == -2147483648)
+	if (number == -2147483648)
 	{
-		ft_putnbr_base_recursive(nbr / len, base, len);
-		write(1, &(base[-(nbr % len)]), 1);
+		ft_putnbr_base_recursive(number / r, base, r);
+		write(1, &(base[-(number % r)]), 1);
 		return ;
 	}
-	if (nbr < 0)
+	if (number < 0)
 	{
 		write(1, "-", 1);
-		ft_putnbr_base_recursive(-nbr, base, len);
+		ft_putnbr_base_recursive(-number, base, r);
 		return ;
 	}
-	if (nbr > len - 1)
-		ft_putnbr_base_recursive(nbr / len, base, len);
-	write(1, &(base[nbr % len]), 1);
+	if (number > r - 1)
+		ft_putnbr_base_recursive(number / r, base, r);
+	write(1, &(base[number % r]), 1);
 }
 
 void	ft_putnbr_base(int nbr, char *base)
 {
-	int	len;
+	int	radix;
 
-	if (!is_base(base))
+	if (!is_base_valid(base))
 		return ;
-	len = ft_strlen(base);
-	ft_putnbr_base_recursive(nbr, base, len);
+	radix = ft_strlen(base);
+	ft_putnbr_base_recursive(nbr, base, radix);
 }
