@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_recursive_power                                 :+:      :+:    :+:   */
+/*   ft_rev_paramas                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcuenca <jcuenca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,16 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_recursive_power_recursive(int nb, int pow, int res)
+#include <unistd.h>
+
+void	ft_putstr(char *str)
 {
-	if (pow-- > 0)
-		return (ft_recursive_power_recursive(nb, pow, res *= nb));
-	return (res);
+	while (*str)
+		write(1, str++, 1);
 }
 
-int	ft_recursive_power(int nb, int pow)
+int		main(int argc, char **argv)
 {
-	if (pow < 0)
-		return (0);
-	return (ft_recursive_power_recursive(nb, pow, 1));
+	int	i;
+
+	i = 0;
+	while (++i < argc)
+	{
+		ft_putstr(argv[argc - i]);
+		ft_putstr("\n");
+	}
 }

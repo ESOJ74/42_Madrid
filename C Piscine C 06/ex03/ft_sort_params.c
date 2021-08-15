@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar                                         :+:      :+:    :+:   */
+/*   ft_sort_params                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcuenca <jcuenca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,27 +12,65 @@
 
 #include <unistd.h>
 
-void	ft_putchar(char c)
+void	ft_putstr(char *str)
 {
-	write(1, &c, 1);
+	while (*str)
+		write(1, str++, 1);
 }
 
-void	ft_putnbr(int nb)
+void	ft_swap(char **a, char **b)
 {
-	if (nb == -2147483648)
+	char *c;
+
+	c = *a;
+	*a = *b;
+	*b = c;
+}
+
+int		ft_strcmp(char *s1, char *s2)
+{
+	while (*s1 != '\0' && (*s1 == *s2))
 	{
-		ft_putnbr(nb / 10);
-		ft_putchar('8');
+		s1++;
+		s2++;
 	}
-	else if (nb < 0)
+	return (*(unsigned char*)s1 - *(unsigned char*)s2);
+}
+
+void	ft_str_sort(char **arr, int size, int offset)
+{
+	int		i;
+	int	swapped;
+
+	i = offset;
+	while (1)
 	{
-		ft_putchar('-');
-		ft_putnbr(-nb);
+		i = offset;
+		swapped = 0;
+		while (i < size)
+		{
+			if (ft_strcmp(arr[i], arr[i + 1]) > 0)
+			{
+				ft_swap(&arr[i], &arr[i + 1]);
+				swapped = 1;
+			}
+			i++;
+		}
+		if (!swapped)
+			break ;
 	}
-	else
+}
+
+int		main(int argc, char **argv)
+{
+	int	index;
+
+	if (argc > 2)
+		ft_str_sort(argv, argc - 1, 1);
+	index = 0;
+	while (++index < argc)
 	{
-		if (nb > 9)
-			ft_putnbr(nb / 10);
-		ft_putchar(48 + nb % 10);
+		ft_putstr(argv[index]);
+		ft_putstr("\n");
 	}
 }

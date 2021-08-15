@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ft.c                                            :+:      :+:    :+:   */
+/*   ft_putnbr_base                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcuenca <jcuenca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,57 +10,80 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_putchar1(char c)
-{
-	write(1, &c, 1);
-}
+#include <unistd.h>
 
-static int	ft_check_base(char *base)
+int		ft_strlen(char *str)
 {
 	int	i;
-	int	z;
 
 	i = 0;
-	if (!base || !base[1])
-		return (0);
-	while (base[i])
+	while (str[i])
+		i++;
+	return (i);
+}
+
+int	string(char c, char *str)
+{
+	while (*str)
 	{
-		if (!((base[i] >= '0' && base[i] <= '9') || (base[i] >= 'a' \
-				&& base[i] <= 'z') || (base[i] >= 'A' && base[i] <= 'Z')))
+		if (*str++ == c)
+			return (1);
+	}
+	return (0);
+}
+
+int	is_base(char *str)
+{
+	char	*curr;
+	int		i;
+	int		j;
+
+	curr = str;
+	if (str == 0 || ft_strlen(str) <= 1)
+		return (0);
+	while (*curr)
+	{
+		if (string(*curr, "\t\n\v\f\r "))
 			return (0);
-		z = i + 1;
-		while (base[z])
-		{
-			if (base[i] == base[z])
+		curr++;		
+	}
+	i = 0;
+	while (i < curr - str)
+	{
+		j = i + 1;
+		while (j < curr - str)
+			if (str[i] == str[j++])
 				return (0);
-			z++;
-		}
 		i++;
 	}
-	return (i);
+	return (1);
+}
+
+void	ft_putnbr_base_recursive(int nbr, char *base, int len)
+{
+	if (nbr == -2147483648)
+	{
+		ft_putnbr_base_recursive(nbr / len, base, len);
+		write(1, &(base[-(nbr % len)]), 1);
+		return ;
+	}
+	if (nbr < 0)
+	{
+		write(1, "-", 1);
+		ft_putnbr_base_recursive(-nbr, base, len);
+		return ;
+	}
+	if (nbr > len - 1)
+		ft_putnbr_base_recursive(nbr / len, base, len);
+	write(1, &(base[nbr % len]), 1);
 }
 
 void	ft_putnbr_base(int nbr, char *base)
 {
-	int		i;
-	int		base_type;
-	int		n[16];
+	int	len;
 
-	i = 0;
-	if ((base_type == ft_check_base(base)))
-	{
-		if (nbr < 0)
-		{
-			nbr = -nbr;
-			ft_putchar1('-');
-		}
-		while (nbr)
-		{
-			n[i] = nbr % base_type;
-			nbr /= base_type;
-			i++;
-		}
-		while (i > 0)
-			ft_putchar1(base[n[--i]]);
-	}
+	if (!is_base(base))
+		return ;
+	len = ft_strlen(base);
+	ft_putnbr_base_recursive(nbr, base, len);
 }

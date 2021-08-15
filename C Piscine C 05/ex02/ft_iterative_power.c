@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ft.c                                            :+:      :+:    :+:   */
+/*   ft_iterative_power                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcuenca <jcuenca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,12 +12,12 @@
 
 int	ft_iterative_power(int nb, int power)
 {
-	int result;
+	int res;
 
 	if (power < 0)
 		return (0);
-	result = 1;
+	res = 1;
 	while (power-- > 0)
-		result *= nb;
-	return (result);
+		res *= nb;
+	return (res);
 }

@@ -1,0 +1,12 @@
+echo "     ex00"
+gcc ../ex00/*.c && ./a.out
+echo "---------------------------"
+echo "     ex01"
+gcc ../ex01/*.c && ./a.out "text1" "text2" "text3"
+echo "---------------------------"
+echo "     ex02"
+gcc ../ex02/*.c && ./a.out "text1" "text2" "text3"
+echo "---------------------------"
+echo "     ex03"
+gcc ../ex03/*.c && ./a.out "elefante" "avion" "zapato" "casa"
+echo "---------------------------"

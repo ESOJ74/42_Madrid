@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ft.c                                            :+:      :+:    :+:   */
+/*   ft_find_next_prime                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcuenca <jcuenca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,27 +10,25 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdbool.h>
-
 int	ft_sqrt(int nb)
 {
 	unsigned int		sqrt;
-	unsigned int		index;
+	unsigned int		i;
 
 	if (nb < 0)
 		return (0);
 	if (nb <= 1)
 		return (nb);
-	index = 0;
-	while ((sqrt = index * index) <= (unsigned int)nb)
-		index++;
-	index -= 1;
-	return (index);
+	i = 0;
+	while ((sqrt = i * i) <= (unsigned int)nb)
+		i++;
+	i -= 1;
+	return (i);
 }
 
 int	ft_is_prime(int nb)
 {
-	int	index;
+	int	i;
 	int	sqrt;
 
 	if (nb <= 1)
@@ -39,16 +37,16 @@ int	ft_is_prime(int nb)
 		return (1);
 	if (nb % 2 == 0 || nb % 3 == 0)
 		return (0);
-	index = 2;
+	i = 2;
 	sqrt = ft_sqrt(nb);
-	while ((index <= sqrt) && (nb % index != 0))
-		index++;
-	return (index > sqrt);
+	while ((i <= sqrt) && (nb % i != 0))
+		i++;
+	return (i > sqrt);
 }
 
 int	ft_find_next_prime(int nb)
 {
-	while (true)
+	while (1)
 	{
 		if (ft_is_prime(nb))
 			return (nb);

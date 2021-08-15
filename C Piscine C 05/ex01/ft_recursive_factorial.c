@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ft.c                                            :+:      :+:    :+:   */
+/*   ft_recursive_factorial                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcuenca <jcuenca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_recursive_factorial_recursive(int factorial, int number)
+int	ft_recursive_factorial_recursive(int fac, int nb)
 {
-	factorial *= number--;
-	if (number > 0)
-		return (ft_recursive_factorial_recursive(factorial, number));
-	return (factorial);
+	fac *= nb--;
+	if (nb > 0)
+		return (ft_recursive_factorial_recursive(fac, nb));
+	return (fac);
 }
 
 int	ft_recursive_factorial(int nb)

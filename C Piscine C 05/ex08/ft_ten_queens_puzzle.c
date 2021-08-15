@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ft.c                                            :+:      :+:    :+:   */
+/*   ft_ten_queens_puzzle                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcuenca <jcuenca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,12 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdbool.h>
 #include <unistd.h>
 
 #define BOARD_SIZE 10
 
-bool	is_queen_at_risk(int board[][BOARD_SIZE], int at_x, int at_y)
+int	risk(int board[][BOARD_SIZE], int at_x, int at_y)
 {
 	int	x;
 	int	y;
@@ -32,82 +31,82 @@ bool	is_queen_at_risk(int board[][BOARD_SIZE], int at_x, int at_y)
 			if (x == at_x || y == at_y
 				|| y == x + offsets[0] || y == -x + offsets[1])
 				if (board[y][x])
-					return (true);
+					return (1);
 			y++;
 		}
 		x++;
 	}
-	return (false);
+	return (0);
 }
 
 void	clear_column(int board[][BOARD_SIZE], int x)
 {
-	int	index;
+	int	i;
 
-	index = 0;
-	while (index < BOARD_SIZE)
+	i = 0;
+	while (i < BOARD_SIZE)
 	{
-		board[index++][x] = false;
+		board[i++][x] = 0;
 	}
 }
 
-void	print_queen_position(int board[][BOARD_SIZE])
+void	queen_position(int board[][BOARD_SIZE])
 {
 	int	y;
-	int	column;
+	int	col;
 
 	y = 0;
 	while (y < BOARD_SIZE)
 	{
-		column = 0;
-		while (column < BOARD_SIZE)
+		col = 0;
+		while (col < BOARD_SIZE)
 		{
-			if (board[y][column])
+			if (board[y][col])
 			{
-				write(1, &"0123456789"[column], 1);
+				write(1, &"0123456789"[col], 1);
 				break ;
 			}
-			column++;
+			col++;
 		}
 		y++;
 	}
 	write(1, "\n", 1);
 }
 
-bool	recursive_find(int board[][BOARD_SIZE], int x, int *soluce)
+int	find(int board[][BOARD_SIZE], int x, int *sol)
 {
 	int	y;
 
 	if (x >= BOARD_SIZE)
-		return (true);
+		return (1);
 	y = 0;
 	while (y < BOARD_SIZE)
 	{
-		if (!is_queen_at_risk(board, x, y))
+		if (!risk(board, x, y))
 		{
-			board[y][x] = true;
-			if (recursive_find(board, x + 1, soluce))
+			board[y][x] = 1;
+			if (find(board, x + 1, sol))
 			{
-				*soluce += 1;
-				print_queen_position(board);
+				*sol += 1;
+				queen_position(board);
 			}
-			board[y][x] = false;
+			board[y][x] = 0;
 		}
 		y++;
 	}
-	return (false);
+	return (0);
 }
 
 int		ft_ten_queens_puzzle(void)
 {
-	int	soluce;
+	int	sol;
 	int	board[BOARD_SIZE][BOARD_SIZE];
-	int	column;
+	int	col;
 
-	soluce = 0;
-	column = 0;
-	while (column++ < BOARD_SIZE)
-		clear_column(board, column - 1);
-	recursive_find(board, 0, &soluce);
-	return (soluce);
+	sol = 0;
+	col = 0;
+	while (col++ < BOARD_SIZE)
+		clear_column(board, col - 1);
+	find(board, 0, &sol);
+	return (sol);
 }

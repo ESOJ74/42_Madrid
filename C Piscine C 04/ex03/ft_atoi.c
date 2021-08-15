@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ft.c                                            :+:      :+:    :+:   */
+/*   ft_atoi                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcuenca <jcuenca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,24 +10,51 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(char *str)
+int	string(char c, char *str)
 {
-	int	sign;
-	int	num;
-
-	sign = 1;
-	num = 0;
-	while ((*str == ' ') || (*str == '\t') || (*str == '\n')
-		|| (*str == '\v') || (*str == '\f') || (*str == '\r'))
-		str++;
-	if (*str == '-')
-		sign = -1;
-	while ((*str == '-') || (*str == '+'))
-		str++;
-	while (*str >= '0' && *str <= '9')
+	while (*str)
 	{
-		num = (num * 10) + ((int)*str - '0');
+		if (*str++ == c)
+			return (1);
+	}
+	return (0);
+}
+
+int	space(char c)
+{
+	return (string(c, "\t\n\v\f\r "));
+}
+
+int	operator(char c)
+{
+	return (string(c, "+-"));
+}
+
+int	number(char c)
+{
+	return (c >= '0' && c <= '9');
+}
+
+int		ft_atoi(char *str)
+{
+	int	res;
+	int	sign;
+
+	res = 0;
+	sign = 1;
+	while (space(*str))
+		str++;
+	while (operator(*str))
+	{
+		if (*str == '-')
+			sign *= -1;
 		str++;
 	}
-	return (num * sign);
+	while (number(*str))
+	{
+		res *= 10;
+		res += *str - '0';
+		str++;
+	}
+	return (res * sign);
 }
