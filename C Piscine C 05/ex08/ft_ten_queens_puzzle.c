@@ -97,7 +97,7 @@ int	find(int board[][BOARD_SIZE], int x, int *sol)
 	return (0);
 }
 
-int		ft_ten_queens_puzzle(void)
+int	ft_ten_queens_puzzle(void)
 {
 	int	sol;
 	int	board[BOARD_SIZE][BOARD_SIZE];
