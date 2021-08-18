@@ -28,15 +28,6 @@ int					main(void)
 		index++;
 	}
 	structs = ft_strs_to_tab(ac, av);
-	index = 0;
-	while (index < ac)
-	{
-		printf("%d\n", index);
-		printf("\t| original : $%s$ @ %p\n", structs[index].str, structs[index].str);
-		printf("\t|   copied : $%s$ @ %p\n", structs[index].copy, structs[index].copy);
-		printf("\t|     size : %d\n", structs[index].size);
-		index++;
-	}
-	printf("---- SHOW TAB\n");
+	
 	ft_show_tab(structs);
 }
