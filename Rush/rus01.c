@@ -1,10 +1,6 @@
-                                                              Fichero main.c
-                                                              
+                                                           //   Fichero main.c
+#include <stdio.h>                                                            
 #include <unistd.h>
-
-void	print_solution(int board[4][4]);
-
-int		operations(int board[4][4], int *input);
 
 int	checkinput(char *arg, int *input)
 {
@@ -52,17 +48,13 @@ int	initboard(int *input)
 			board[i][j++] = 0;
 		i++;
 	}
+	printf("\nboard relleno en initboard\n");
+	print_solution(board);
+	printf("\n");
+	
 	solution(board, input);
 	return (0);
 }
-
-
-
-
-
-
-
-
 
 int	main(int argc, char **argv)
 {
@@ -79,10 +71,7 @@ int	main(int argc, char **argv)
 		write(1, "\nERROR\n\n", 8);
 	return (0);
 }                                                            
-                                                              Fichero print.c
-
-#include <unistd.h>
-
+                                                    //          Fichero print.c
 void	ft_putchar(char c)
 {
 	write(1, &c, 1);
@@ -111,10 +100,11 @@ void	print_solution(int board[4][4])
 		row++;
 	}
 }
-                                                      Fichero board.c
-                                                      
+                                          //            Fichero board.c
 int	up(int board[4][4], int col, int num)
 {
+	printf("Se invoca a la funcion up\n");
+	printf("col = %d,num = %d\n",col, num);
 	int	i;
 	int	max;
 	int	count;
@@ -138,6 +128,8 @@ int	up(int board[4][4], int col, int num)
 
 int	down(int board[4][4], int col, int num)
 {
+	printf("Se invoca a la funcion down\n");
+	printf("col = %d,num = %d\n",col, num);
 	int	i;
 	int	max;
 	int	count;
@@ -161,6 +153,8 @@ int	down(int board[4][4], int col, int num)
 
 int	left(int board[4][4], int row, int num)
 {
+	printf("Se invoca a la funcion left\n");
+	printf("row = %d,num = %d\n",row, num);
 	int	i;
 	int	max;
 	int	count;
@@ -184,6 +178,8 @@ int	left(int board[4][4], int row, int num)
 
 int	right(int board[4][4], int row, int num)
 {
+	printf("Se invoca a la funcion right\n");
+	printf("row = %d,num = %d\n",row, num);
 	int	i;
 	int	max;
 	int	count;
@@ -207,6 +203,7 @@ int	right(int board[4][4], int row, int num)
 
 int	checkboard(int board[4][4], int *in_num)
 {
+	printf("\nSe invoca a la funcion checkboard en board.c\n");
 	int	i;
 
 	i = 0;
@@ -229,10 +226,11 @@ int	checkboard(int board[4][4], int *in_num)
 	return (1);
 }
 
-                                                     Fichero comprobaciones.c
+                                            //         Fichero comprobaciones.c
                                                      
 int	col(int board[4][4], int col, int num)
 {
+	printf("Se invoca a la funcion col en comprobaciones.c\n");
 	int	row;
 
 	row = 0;
@@ -247,6 +245,7 @@ int	col(int board[4][4], int col, int num)
 
 int	row(int board[4][4], int row, int num)
 {
+	printf("Se invoca a la funcion row en comprobaciones.c\n");
 	int	col;
 
 	col = 0;
@@ -261,19 +260,25 @@ int	row(int board[4][4], int row, int num)
 
 int	safe(int board[4][4], int r, int c, int num)
 {
+	printf("\nSe invoca a la funcion safe en comprobaciones.c\n");
+	printf("r = %d,c = %d\n",r,c);
+	print_solution(board);
 	if (((row(board, r, num)) && (col(board, c, num)) \
 			&& (board[r][c] == 0)))
+	{
+		print_solution(board);
+		printf("safe devuelve 1\n");
 		return (1);
+	}
+	printf("safe devuelve 0\n");
 	return (0);
 }
 
-                                                                 Fichero operaciones.c
+                                                       //          Fichero operaciones.c
                                                                  
-int	checkboard(int board[4][4], int *in_num);
-int	safe(int board[4][4], int r, int c, int num);
-
 int	zeros(int board[4][4], int *r, int *c)
 {
+	printf("Se invoca a la funcion zeros\n");
 	*r = 0;
 	*c = 0;
 	while (*r < 4)
@@ -282,33 +287,44 @@ int	zeros(int board[4][4], int *r, int *c)
 		while (*c < 4)
 		{
 			if (board[*r][*c] == 0)
+			{
+				printf("zeros devuelve 1\n");
 				return (1);
+			}
 			*c += 1;
 		}
 		*r += 1;
 	}
+	printf("zeros devuelve 0\n");
 	return (0);
 }
 
 int	operations(int board[4][4], int *input)
 {
+	printf("\nSe invoca a la funcion operations en operaciones.c\n");
 	int	row;
 	int	col;
 	int	n;
 
 	n = 1;
+	
 	if ((zeros(board, &row, &col) == 0) && (checkboard(board, input) == 1))
+	{
+		printf("operations devuelve 1\n");
 		return (1);
+	}
 	while (n <= 4)
 	{
 		if (safe(board, row, col, n))
-		{
+		{			
 			board[row][col] = n;
 			if (operations(board, input) == 1)
 				return (1);
 			board[row][col] = 0;
+			
 		}
 		n++;
 	}
+	printf("operations devuelve 0\n");
 	return (0);
 }      
