@@ -12,95 +12,73 @@
 
 #include <stdlib.h>
 
-int	char_in_string(char c, char *set)
+int		ft_is_space(char to_find, char *str)
 {
-	while (1)
+	while (*str)
 	{
-		if (*set == '\0')
-			return (c == '\0');
-		if (*set == c)
+		if (to_find == *str++)
 			return (1);
-		set++;
 	}
 	return (0);
 }
 
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
+int   ft_wordcount(char *str, char *charset)
 {
-	unsigned int i;
-
-	i = 0;
-	while (i < n && src[i] != '\0')
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	while (i < n)
-		dest[i++] = '\0';
-	return (dest);
-}
-
-int		ft_count(char *str, char *charset)
-{
-	int		count;
-	char	*prev;
-	char	*next;
+	int	count;
 
 	count = 0;
-	prev = str;
-	next = str;
-	while (1)
+	while (*str)
 	{
-		if (char_in_string(*str, charset))
-			next = str;
-		if (next - prev > 1)
+		while (*str && (ft_is_space(*str, charset)))
+			str++;
+		if (*str && !(ft_is_space(*str, charset)))
+		{
 			count++;
-		if (*str == '\0')
-			break ;
-		prev = next;
-		str++;
+			while (*str && !(ft_is_space(*str, charset)))
+				str++;
+		}
 	}
 	return (count);
 }
 
-int		add_part(char **entry, char *prev, int size, char *charset)
+int		ft_wordlen(char *str, char *charset)
 {
-	if (char_in_string(prev[0], charset))
+	int		len;
+
+	len = 0;
+	while (ft_is_space(*str, charset))
+		str++;
+	while (*str && !(ft_is_space(*str, charset)))
 	{
-		prev++;
-		size--;
+		str++;
+		len++;
 	}
-	*entry = (char *)malloc((size + 3));
-	ft_strncpy(*entry, prev, size);
-	(*entry)[size] = '\0';
-	(*entry)[size + 1] = '\0';
-	return (1);
+	return (len);
 }
 
 char	**ft_split(char *str, char *charset)
 {
 	int		i;
-	int		size;
-	char	*prev;
-	char	*next;
+	int		j;
 	char	**arr;
+	int		words;
 
-	arr = (char **)malloc((ft_count(str, charset) + 1) * sizeof(char *));
+	words = ft_wordcount(str, charset);
 	i = 0;
-	prev = str;
-	next = str;
-	while (1)
+	if (!str || (((arr = (char **)malloc(sizeof(char*) * (words + 1)))) == ((void *)0)))
+		return ((void *)0);
+	while (i < words)
 	{
-		if (char_in_string(*str, charset))
-			next = str;
-		size = next - prev;
-		if (size > 1)
-			i += add_part(&arr[i], prev, size, charset);
-		if (*str == '\0')
-			break ;
-		prev = next;
-		str++;
+		if ((arr[i] = (char *)malloc(sizeof(char) * (ft_wordlen(str, charset) + 1))) == ((void *)0))
+			return ((void*)0);
+		j = 0;
+		while (ft_is_space(*str, charset))
+			str++;
+		while (*str && !(ft_is_space(*str, charset)))
+			arr[i][j++] = *str++;
+		arr[i][j] = '\0';
+		i++;
 	}
-	arr[i] = 0;
+	arr[i] = ((void *)0);
 	return (arr);
 }
