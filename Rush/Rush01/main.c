@@ -34,6 +34,7 @@ int	checkinput(char *arg, int *input)
 		}
 		if (arg[i] == ' ')
 			i++;
+		i++;
 	}
 	return (out);
 }
