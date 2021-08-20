@@ -25,15 +25,11 @@ int	checkinput(char *arg, int *input)
 	out = 0;
 	while (arg[i])
 	{
-		if (arg[i] < '1' || arg[i] > '4')
-			return (0);
 		if ((arg[i] >= '1' && arg[i] <= '4') && ((arg[i + 1] == ' ')
 				|| ((arg[i + 1] == 0) && (arg[i - 1] == ' '))))
 		{
-			input[out++] = (arg[i++] - '0');
+			input[out++] = (arg[i] - '0');
 		}
-		if (arg[i] == ' ')
-			i++;
 		i++;
 	}
 	return (out);
