@@ -10,15 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-
 #include "ft_number_dictionary.h"
 
 void	ft_str_write_to(int fd, char *str);
 
 int		ft_resolve_dict_entry_index(t_dict *dict, unsigned long number)
 {
-    printf("Se entra en la funcion ft_resolve_dict_entry_index del fichero ft_itow.c\n");
     int		index;
 
 	index = 0;
@@ -33,7 +30,6 @@ int		ft_resolve_dict_entry_index(t_dict *dict, unsigned long number)
 
 int	ft_itow_is_value_power_of_ten(unsigned long number)
 {
-    printf("Se entra en la funcion ft_itow_is_value_power_of_ten del fichero ft_itow.c\n");
     unsigned long		power;
 
 	power = 1;
@@ -48,7 +44,7 @@ int	ft_itow_is_value_power_of_ten(unsigned long number)
 
 void	ft_itow_print_if(int print, int *put_space, char *str)
 {
-    printf("Se entra en la funcion ft_itow_print_if del fichero ft_itow.c\n");	if (!print)
+    	if (!print)
 		return ;
 	if (*put_space)
 		ft_str_write_to(1, " ");
@@ -58,7 +54,6 @@ void	ft_itow_print_if(int print, int *put_space, char *str)
 
 int	ft_itow_short(t_dict *dict, unsigned long number, int *put_sp, int prnt)
 {
-    printf("Se entra en la funcion ft_itow_short del fichero ft_itow.c\n");
 	int		dict_index;
 
 	dict_index = ft_resolve_dict_entry_index(dict, number);
@@ -70,7 +65,6 @@ int	ft_itow_short(t_dict *dict, unsigned long number, int *put_sp, int prnt)
 
 int	ft_itow(t_dict *dict, unsigned long number, int *put_space, int print)
 {
-    printf("\nSe entra en la funcion ft_itow del fichero ft_itow.c\n");
     int		index;
 	unsigned long	mult;
 	unsigned long	value;

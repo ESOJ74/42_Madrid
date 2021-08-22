@@ -15,7 +15,7 @@ C_LIGHT_RED_B=\033[0;91m
 C_WHITE=\033[0;97m
 C_RESET=\033[0;39m
 
-SRCS	= ./srcs/ft_array_extend.c ./srcs/ft_atoi_split.c ./srcs/ft_file_utils.c ./srcs/ft_itow.c ./srcs/ft_number_dictionary.c ./srcs/ft_number_dictionary_io.c ./srcs/ft_number_dictionary_sort.c ./srcs/ft_number_dictionary_sort2.c ./srcs/ft_str_duplicate.c ./srcs/ft_str_join.c ./srcs/ft_str_length_write_to.c ./srcs/main.c
+SRCS	= ./srcs/main.c ./srcs/load_dictionary.c ./srcs/dictionary.c ./srcs/ft_array_extend.c ./srcs/ft_atoi_split.c ./srcs/ft_itow.c ./srcs/process_lines.c ./srcs/ft_number_dictionary_sort.c ./srcs/ft_number_dictionary_sort2.c ./srcs/ft_str_join.c 
 OBJS	= ${SRCS:.c=.o}
 INCS	= includes
 NAME	= rush-02

@@ -1,0 +1,103 @@
+Se entra en el main
+se entra en la funcion ft_load_default_dictionary del fichero load_dictionary.c
+se entra en la funcion ft_load_dictionary del fichero load_dictionary.c
+
+Se entra en la funcion ft_count_valid_line del fichero dictionary.c
+
+Se entra en la funcion ft_open_file del fichero dictionary.c
+Se entra en la funcion -ft_read_line- del fichero dictionary.c
+
+    Empieza bucle ft_read_line
+-------------------------------------
+Se entra en la funcion ft_extend_array del fichero ft_array_extend.c
+   Se entra en la funcion ft_str_n_copy desde el if
+   Se entra en la funcion ft_str_n_copy
+   la funcion *ft_extend_array devuelve dest = 0
+-------------------------------------
+Se entra en la funcion ft_extend_array del fichero ft_array_extend.c
+   Se entra en la funcion ft_str_n_copy desde el if
+   Se entra en la funcion ft_str_n_copy
+   la funcion *ft_extend_array devuelve dest = 0:
+-------------------------------------
+Se entra en la funcion ft_extend_array del fichero ft_array_extend.c
+   Se entra en la funcion ft_str_n_copy desde el if
+   Se entra en la funcion ft_str_n_copy
+   la funcion *ft_extend_array devuelve dest = 0: 
+-------------------------------------
+Se entra en la funcion ft_extend_array del fichero ft_array_extend.c
+   Se entra en la funcion ft_str_n_copy desde el if
+   Se entra en la funcion ft_str_n_copy
+   la funcion *ft_extend_array devuelve dest = 0: z
+-------------------------------------
+Se entra en la funcion ft_extend_array del fichero ft_array_extend.c
+   Se entra en la funcion ft_str_n_copy desde el if
+   Se entra en la funcion ft_str_n_copy
+   la funcion *ft_extend_array devuelve dest = 0: ze
+-------------------------------------
+Se entra en la funcion ft_extend_array del fichero ft_array_extend.c
+   Se entra en la funcion ft_str_n_copy desde el if
+   Se entra en la funcion ft_str_n_copy
+   la funcion *ft_extend_array devuelve dest = 0: zer
+-------------------------------------
+Se entra en la funcion ft_extend_array del fichero ft_array_extend.c
+   Se entra en la funcion ft_str_n_copy desde el if
+   Se entra en la funcion ft_str_n_copy
+   la funcion *ft_extend_array devuelve dest = 0: zero
+-------------------------------------
+Se entra en la funcion ft_extend_array del fichero ft_array_extend.c
+   Se entra en la funcion ft_str_n_copy desde el if
+   Se entra en la funcion ft_str_n_copy
+   la funcion *ft_extend_array devuelve dest = 0: zero
+
+Se entra en la funcion ft_process_line del fichero process_lines.c
+line = 0: zero
+
+  se entra en la funcion ft_is_number del fichero ft_atoi_split.c
+  se entra en la funcion ft_is_number del fichero ft_atoi_split.c
+  se entra en la funcion ft_str_n_duplicate del fichero ft_atoi_split.c
+     str = 0: zero
+    devuelve dup = 0
+
+  se entra en la funcion ft_atoi del fichero ft_atoi_split.c
+  se entra en la funcion ft_is_whitespace del fichero ft_atoi_split.c
+  se entra en la funcion ft_is_number del fichero ft_atoi_split.c
+  se entra en la funcion ft_is_number del fichero ft_atoi_split.c
+     entry->value = 0
+  se entra en la funcion ft_str_n_duplicate del fichero ft_atoi_split.c
+     str = zero
+    devuelve dup = zero
+
+Se entra en la funcion ft_clean_line del fichero process_lines.c
+  se entra en la funcion ft_is_whitespace del fichero ft_atoi_split.c
+  se entra en la funcion ft_is_whitespace del fichero ft_atoi_split.c
+  se entra en la funcion ft_is_whitespace del fichero ft_atoi_split.c
+  se entra en la funcion ft_is_whitespace del fichero ft_atoi_split.c
+  se entra en la funcion ft_is_whitespace del fichero ft_atoi_split.c
+  se entra en la funcion ft_is_whitespace del fichero ft_atoi_split.c
+  se entra en la funcion ft_is_whitespace del fichero ft_atoi_split.c
+  se entra en la funcion ft_is_whitespace del fichero ft_atoi_split.c
+  se entra en la funcion ft_is_whitespace del fichero ft_atoi_split.c
+  se entra en la funcion ft_is_whitespace del fichero ft_atoi_split.c
+  se entra en la funcion ft_is_whitespace del fichero ft_atoi_split.c
+  se entra en la funcion ft_is_whitespace del fichero ft_atoi_split.c
+  se entra en la funcion ft_str_n_duplicate del fichero ft_atoi_split.c
+     str = zero    devuelve dup = zero
+
+se entra en la funcion ft_str_join del fichero ft_str_join.c
+se entra en la funcion ft_str_length del fichero ft_str_join.c
+    ft_str_length devuelve index = 1
+se entra en la funcion ft_str_join_get_final_length del fichero ft_str_join.c
+se entra en la funcion ft_str_length del fichero ft_str_join.c
+    ft_str_length devuelve index = 4
+    final_length devuelve final_length = 4
+se entra en la funcion ft_str_copy del fichero ft_str_join.c
+    ft_str_copy devuelve dest = zero
+se entra en la funcion ft_str_length del fichero ft_str_join.c
+    ft_str_length devuelve index = 4
+    ft_str_join devuelve string = zero
+     entry->str = zero
+se entra en la funcion ft_str_length del fichero ft_str_join.c
+    ft_str_length devuelve index = 4
+--------------------------------
+Finaliza bucle ft_read_line
+

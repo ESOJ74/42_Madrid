@@ -1,0 +1,104 @@
+two hundred fifty
+Se entra en la funcion ft_itow del fichero ft_itow.c
+   Se entra en la funcion ft_resolve_dict_entry_index del fichero ft_itow.c
+      ft_resolve_dict_entry_index devuelve -1
+
+Se entra en la funcion ft_itow del fichero ft_itow.c
+   Se entra en la funcion ft_itow_short del fichero ft_itow.c
+   Se entra en la funcion ft_resolve_dict_entry_index del fichero ft_itow.c
+      ft_resolve_dict_entry_index devuelve index = 2
+   Se entra en la funcion ft_itow_print_if del fichero ft_itow.c
+      ft_itow_short devuelve 1
+      ft_itow devuelve ft_itow_short(dict, number, put_space, print
+   Se entra en la funcion ft_itow_short del fichero ft_itow.c
+   Se entra en la funcion ft_resolve_dict_entry_index del fichero ft_itow.c
+      ft_resolve_dict_entry_index devuelve index = 2
+   Se entra en la funcion ft_itow_print_if del fichero ft_itow.c
+      ft_itow_short devuelve 1
+   Se entra en la funcion ft_itow_print_if del fichero ft_itow.c
+      ft_itow devuelve ft_itow_short(dict, number, put_space, print
+
+Se entra en la funcion ft_itow del fichero ft_itow.c
+   Se entra en la funcion ft_resolve_dict_entry_index del fichero ft_itow.c
+      ft_resolve_dict_entry_index devuelve -1
+   Se entra en la funcion ft_itow_print_if del fichero ft_itow.c
+      ft_itow devuelve ft_itow_short(dict, number, put_space, print
+
+Se entra en la funcion ft_itow del fichero ft_itow.c
+   Se entra en la funcion ft_itow_short del fichero ft_itow.c
+   Se entra en la funcion ft_resolve_dict_entry_index del fichero ft_itow.c
+      ft_resolve_dict_entry_index devuelve index = 2
+   Se entra en la funcion ft_itow_print_if del fichero ft_itow.c
+      ft_itow_short devuelve 1
+      ft_itow devuelve ft_itow_short(dict, number, put_space, print
+   Se entra en la funcion ft_itow_short del fichero ft_itow.c
+   Se entra en la funcion ft_resolve_dict_entry_index del fichero ft_itow.c
+      ft_resolve_dict_entry_index devuelve index = 2
+   Se entra en la funcion ft_itow_print_if del fichero ft_itow.c
+      ft_itow_short devuelve 1
+
+Se entra en la funcion ft_itow del fichero ft_itow.c
+   Se entra en la funcion ft_resolve_dict_entry_index del fichero ft_itow.c
+      ft_resolve_dict_entry_index devuelve -1
+
+Se entra en la funcion ft_itow del fichero ft_itow.c
+   Se entra en la funcion ft_itow_short del fichero ft_itow.c
+   Se entra en la funcion ft_resolve_dict_entry_index del fichero ft_itow.c
+      ft_resolve_dict_entry_index devuelve index = 2
+   Se entra en la funcion ft_itow_print_if del fichero ft_itow.c
+      ft_itow_short devuelve 1
+      ft_itow devuelve ft_itow_short(dict, number, put_space, print
+   Se entra en la funcion ft_itow_short del fichero ft_itow.c
+   Se entra en la funcion ft_resolve_dict_entry_index del fichero ft_itow.c
+      ft_resolve_dict_entry_index devuelve index = 2
+   Se entra en la funcion ft_itow_print_if del fichero ft_itow.c
+Se entra en la funcion ft_str_write_to del fichero ft_number_dictionary_sort2
+     Se imprime por pantalla
+            two
+      ft_itow_short devuelve 1
+   Se entra en la funcion ft_itow_print_if del fichero ft_itow.c
+Se entra en la funcion ft_str_write_to del fichero ft_number_dictionary_sort2
+     Se imprime por pantalla
+             
+Se entra en la funcion ft_str_write_to del fichero ft_number_dictionary_sort2
+     Se imprime por pantalla
+            hundred
+      ft_itow devuelve ft_itow_short(dict, number, put_space, print
+
+Se entra en la funcion ft_itow del fichero ft_itow.c
+   Se entra en la funcion ft_resolve_dict_entry_index del fichero ft_itow.c
+      ft_resolve_dict_entry_index devuelve -1
+   Se entra en la funcion ft_itow_print_if del fichero ft_itow.c
+Se entra en la funcion ft_str_write_to del fichero ft_number_dictionary_sort2
+     Se imprime por pantalla
+             
+Se entra en la funcion ft_str_write_to del fichero ft_number_dictionary_sort2
+     Se imprime por pantalla
+            fifty
+      ft_itow devuelve ft_itow_short(dict, number, put_space, print
+
+Se entra en la funcion ft_itow del fichero ft_itow.c
+   Se entra en la funcion ft_itow_short del fichero ft_itow.c
+   Se entra en la funcion ft_resolve_di two
+ct_entry_index del fichero ft_itow.c
+      ft_resolve_dict_entry_index devuelve index = 2
+   Se entra en la funcion ft_itow_print_if del fichero ft_itow.c
+      ft_itow_short devuelve 1
+      ft_itow devuelve ft_itow_short(dict, number, put_space, print
+   Se entra en la funcion ft_itow_short del fichero ft_itow.c
+   Se entra en la funcion ft_resolve_dict_entry_index del fichero ft_itow.c
+      ft_resolve_dict_entry_index devuelve index = 2
+   Se entra en la funcion ft_itow_print_if del fichero ft_itow.c
+Se entra en la funcion ft_str_write_to del fichero ft_number_dictionary_sort2
+     Se imprime por pantalla
+             
+Se entra en la funcion ft_str_write_to del fichero ft_number_dictionary_sort2
+     Se imprime por pantalla
+            two
+      ft_itow_short devuelve 1
+Se entra en la funcion ft_str_write_to del fichero ft_number_dictionary_sort2
+     Se imprime por pantalla
+            
+
+
+se entra en la funcion ft_free_dictionary del fichero load_dictionary.c

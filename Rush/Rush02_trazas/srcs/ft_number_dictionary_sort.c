@@ -11,14 +11,12 @@
 /* ************************************************************************** */
 
 #include "ft_number_dictionary.h"
-#include <stdio.h>
 
 int				ft_sort_dict_f_normal(t_dict_entry *a, t_dict_entry *b);
 int				ft_sort_dict_f_value(t_dict_entry *a, t_dict_entry *b);
 
 void	ft_swap_dictionary_entry(t_dict_entry *a, t_dict_entry *b)
 {
-    printf("se entra en la funcion ft_swap_dictionary_entry del fichero ft_number_dictionary_sort.c\n");
 	t_dict_entry	c;
 
 	c = *a;
@@ -28,7 +26,6 @@ void	ft_swap_dictionary_entry(t_dict_entry *a, t_dict_entry *b)
 
 void	ft_update_normal_flag(t_dict *dict)
 {
-    printf("se entra en la funcion ft_update_normal_flag del fichero ft_number_dictionary_sort.c\n");
     int				index;
 	t_dict_entry	*entry;
 	int			normal;
@@ -42,7 +39,7 @@ void	ft_update_normal_flag(t_dict *dict)
 			normal = 1;
 		if (entry->value > 20 || entry->value < 100)
 			if (entry->value % 10 == 0)
-				normal = 1;
+				normal = 1;	        
 		entry->normal = normal;
 		index++;
 	}
@@ -51,7 +48,6 @@ void	ft_update_normal_flag(t_dict *dict)
 void	ft_do_sort_dict(t_dict *dict, int start, int end,
 						int (*func)(t_dict_entry*, t_dict_entry*))
     {
-    printf("se entra en la funcion ft_do_sort_dict del fichero ft_number_dictionary_sort.c\n");
     int				index;
 	int				jndex;
 	int			swapped;
@@ -80,10 +76,10 @@ void	ft_do_sort_dict(t_dict *dict, int start, int end,
 
 void	ft_sort_dictionary(t_dict *dict)
 {
-    printf("se entra en la funcion ft_sort_dictionary del fichero ft_number_dictionary_sort.c\n");	int		index;
+        int		index;
 	int		index_of_zero;
 
-	ft_update_normal_flag(dict);
+	ft_update_normal_flag(dict);	
 	ft_do_sort_dict(dict, 0, dict->size - 1, &ft_sort_dict_f_normal);
 	index = 0;
 	index_of_zero = INVALID;

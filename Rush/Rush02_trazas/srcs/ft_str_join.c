@@ -11,13 +11,19 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include<stdio.h>
 
-int		ft_str_length(char *str);
+int		ft_str_length(char *str)
+{
+    int	index;
+
+	index = 0;
+	while (str[index])
+		index++;
+	return (index);
+}
 
 char	*ft_str_copy(char *dest, char *src)
 {
-    printf("se entra en la funcion ft_str_copy del fichero ft_str_join.c\n");
     int index;
 
 	index = 0;
@@ -32,7 +38,6 @@ char	*ft_str_copy(char *dest, char *src)
 
 int		ft_str_join_get_final_length(char **strings, int size, int sep_length)
 {
-     printf("se entra en la funcion ft_str_join_get_final_length del fichero ft_str_join.c\n");
     int	final_length;
 	int	index;
 
@@ -50,7 +55,6 @@ int		ft_str_join_get_final_length(char **strings, int size, int sep_length)
 
 char	*ft_str_join(int size, char **strs, char *sep)
 {
-    printf("se entra en la funcion ft_str_join del fichero ft_str_join.c\n");
     int		full_length;
 	int		index;
 	char	*read_head;

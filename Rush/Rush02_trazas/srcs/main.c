@@ -25,14 +25,10 @@ int	ft_itow(t_dict *dict, unsigned long number, int *put_space, int print);
 
 t_error		process(char *to_convert, t_dict *dict)
 {
-    printf("Se entra en la funcion process del fichero main.c\n");
     unsigned long	number;
 	int	put_space;
 
-    printf("----------------------------------------------------------------------------------\n");
-    printf("Se entra en la funcion ft_atoi del fichero ft_atoi_split.c char = %s\n", to_convert);
     number = ft_atoi(to_convert);
-    printf("Se retorna de la funcion ft_atoi number = %lu\n", number);
     if (number == (unsigned long)-1)
 		return (invalid_number);
 	if (!ft_itow(dict, number, 0, 0))
@@ -74,7 +70,6 @@ t_error		check_argv(int argc, char **argv, char **to_conv, t_dict *dict)
 
 int			main(int argc, char **argv)
 {
-    printf("Se entra en el main\n");
 	t_error	error;
 	t_dict	dict;
 	char	*to_convert;

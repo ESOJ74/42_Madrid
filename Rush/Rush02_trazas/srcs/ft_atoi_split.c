@@ -11,9 +11,6 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdio.h>
-
-char	*ft_str_n_duplicate(char *src, int n);
 
 int	ft_is_number(char c)
 {
@@ -28,7 +25,6 @@ int	ft_is_whitespace(char c)
 
 unsigned long	ft_atoi(char *str)
 {
-    
     unsigned long	result;
     
 	while (ft_is_whitespace(*str))
@@ -61,6 +57,29 @@ int		ft_split_whitespace_count_word(char *str)
 		count++;
 	}
 	return (count);
+}
+
+char	*ft_str_n_duplicate(char *str, int n)
+{
+    int		index;
+	int		length;
+	char	*dup;
+
+	length = 0;
+	while (str[length])
+		length++;
+	if (length > n)
+		length = n;
+	if (!(dup = malloc((length + 1) * sizeof(char))))
+		return (NULL);
+	index = 0;
+	while (index < length)
+	{
+		dup[index] = str[index];
+		index++;
+	}
+	dup[index] = '\0';
+	return (dup);
 }
 
 char	**ft_split_whitespace(char *str)

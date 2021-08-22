@@ -1,0 +1,148 @@
+---------------------------------------
+Se ordena el diccionario
+---------------------------------------
+se entra en la funcion ft_sort_dictionary del fichero ft_number_dictionary_sort.c
+    se entra en la funcion ft_update_normal_flag del fichero ft_number_dictionary_sort.c
+    entry->normal = 1
+    
+se entra en la funcion ft_do_sort_dict del fichero ft_number_dictionary_sort.c
+      se entra en la funcion ft_sort_dict_f_normal del fichero ft_number_dictionary_sort2.c
+        a->normal = 1, b->normal = 1
+      se entra en la funcion ft_sort_dict_f_normal del fichero ft_number_dictionary_sort2.c
+        a->normal = 1, b->normal = 1
+      se entra en la funcion ft_sort_dict_f_normal del fichero ft_number_dictionary_sort2.c
+        a->normal = 1, b->normal = 1
+      se entra en la funcion ft_sort_dict_f_normal del fichero ft_number_dictionary_sort2.c
+        a->normal = 1, b->normal = 1
+      se entra en la funcion ft_sort_dict_f_normal del fichero ft_number_dictionary_sort2.c
+        a->normal = 1, b->normal = 1
+      se entra en la funcion ft_sort_dict_f_normal del fichero ft_number_dictionary_sort2.c
+        a->normal = 1, b->normal = 1
+      se entra en la funcion ft_sort_dict_f_normal del fichero ft_number_dictionary_sort2.c
+        a->normal = 1, b->normal = 1
+      se entra en la funcion ft_sort_dict_f_normal del fichero ft_number_dictionary_sort2.c
+        a->normal = 1, b->normal = 1
+      se entra en la funcion ft_sort_dict_f_normal del fichero ft_number_dictionary_sort2.c
+        a->normal = 1, b->normal = 1
+      se entra en la funcion ft_sort_dict_f_normal del fichero ft_number_dictionary_sort2.c
+        a->normal = 1, b->normal = 1
+      se entra en la funcion ft_sort_dict_f_normal del fichero ft_number_dictionary_sort2.c
+        a->normal = 1, b->normal = 1
+      se entra en la funcion ft_sort_dict_f_normal del fichero ft_number_dictionary_sort2.c
+        a->normal = 1, b->normal = 1
+      se entra en la funcion ft_sort_dict_f_normal del fichero ft_number_dictionary_sort2.c
+        a->normal = 1, b->normal = 1
+      se entra en la funcion ft_sort_dict_f_normal del fichero ft_number_dictionary_sort2.c
+        a->normal = 1, b->normal = 1
+      se entra en la funcion ft_sort_dict_f_normal del fichero ft_number_dictionary_sort2.c
+        a->normal = 1, b->normal = 1
+      se entra en la funcion ft_sort_dict_f_normal del fichero ft_number_dictionary_sort2.c
+        a->normal = 1, b->normal = 1
+      se entra en la funcion ft_sort_dict_f_normal del fichero ft_number_dictionary_sort2.c
+        a->normal = 1, b->normal = 1
+      se entra en la funcion ft_sort_dict_f_normal del fichero ft_number_dictionary_sort2.c
+        a->normal = 1, b->normal = 1
+      se entra en la funcion ft_sort_dict_f_normal del fichero ft_number_dictionary_sort2.c
+        a->normal = 1, b->normal = 1
+      se entra en la funcion ft_sort_dict_f_normal del fichero ft_number_dictionary_sort2.c
+        a->normal = 1, b->normal = 1
+      se entra en la funcion ft_sort_dict_f_normal del fichero ft_number_dictionary_sort2.c
+        a->normal = 1, b->normal = 1
+      se entra en la funcion ft_sort_dict_f_normal del fichero ft_number_dictionary_sort2.c
+        a->normal = 1, b->normal = 1
+      se entra en la funcion ft_sort_dict_f_normal del fichero ft_number_dictionary_sort2.c
+        a->normal = 1, b->normal = 1
+      se entra en la funcion ft_sort_dict_f_normal del fichero ft_number_dictionary_sort2.c
+        a->normal = 1, b->normal = 1
+      se entra en la funcion ft_sort_dict_f_normal del fichero ft_number_dictionary_sort2.c
+        a->normal = 1, b->normal = 1
+      se entra en la funcion ft_sort_dict_f_normal del fichero ft_number_dictionary_sort2.c
+        a->normal = 1, b->normal = 1
+      se entra en la funcion ft_sort_dict_f_normal del fichero ft_number_dictionary_sort2.c
+        a->normal = 1, b->normal = 1
+      se entra en la funcion ft_sort_dict_f_normal del fichero ft_number_dictionary_sort2.c
+        a->normal = 1, b->normal = 1
+      se entra en la funcion ft_sort_dict_f_normal del fichero ft_number_dictionary_sort2.c
+        a->normal = 1, b->normal = 1
+      se entra en la funcion ft_sort_dict_f_normal del fichero ft_number_dictionary_sort2.c
+        a->normal = 1, b->normal = 1
+      se entra en la funcion ft_sort_dict_f_normal del fichero ft_number_dictionary_sort2.c
+        a->normal = 1, b->normal = 1
+      se entra en la funcion ft_sort_dict_f_normal del fichero ft_number_dictionary_sort2.c
+        a->normal = 1, b->normal = 1
+      se entra en la funcion ft_sort_dict_f_normal del fichero ft_number_dictionary_sort2.c
+        a->normal = 1, b->normal = 1
+      se entra en la funcion ft_sort_dict_f_normal del fichero ft_number_dictionary_sort2.c
+        a->normal = 1, b->normal = 1
+    
+se entra en la funcion ft_do_sort_dict del fichero ft_number_dictionary_sort.c
+      se entra en la funcion ft_sort_dict_f_value del fichero ft_number_dictionary_sort2.c
+         a->value = 0, b->value = 1
+      se entra en la funcion ft_sort_dict_f_value del fichero ft_number_dictionary_sort2.c
+         a->value = 1, b->value = 2
+      se entra en la funcion ft_sort_dict_f_value del fichero ft_number_dictionary_sort2.c
+         a->value = 2, b->value = 3
+      se entra en la funcion ft_sort_dict_f_value del fichero ft_number_dictionary_sort2.c
+         a->value = 3, b->value = 4
+      se entra en la funcion ft_sort_dict_f_value del fichero ft_number_dictionary_sort2.c
+         a->value = 4, b->value = 5
+      se entra en la funcion ft_sort_dict_f_value del fichero ft_number_dictionary_sort2.c
+         a->value = 5, b->value = 6
+      se entra en la funcion ft_sort_dict_f_value del fichero ft_number_dictionary_sort2.c
+         a->value = 6, b->value = 7
+      se entra en la funcion ft_sort_dict_f_value del fichero ft_number_dictionary_sort2.c
+         a->value = 7, b->value = 8
+      se entra en la funcion ft_sort_dict_f_value del fichero ft_number_dictionary_sort2.c
+         a->value = 8, b->value = 9
+      se entra en la funcion ft_sort_dict_f_value del fichero ft_number_dictionary_sort2.c
+         a->value = 9, b->value = 10
+      se entra en la funcion ft_sort_dict_f_value del fichero ft_number_dictionary_sort2.c
+         a->value = 10, b->value = 11
+      se entra en la funcion ft_sort_dict_f_value del fichero ft_number_dictionary_sort2.c
+         a->value = 11, b->value = 12
+      se entra en la funcion ft_sort_dict_f_value del fichero ft_number_dictionary_sort2.c
+         a->value = 12, b->value = 13
+      se entra en la funcion ft_sort_dict_f_value del fichero ft_number_dictionary_sort2.c
+         a->value = 13, b->value = 14
+      se entra en la funcion ft_sort_dict_f_value del fichero ft_number_dictionary_sort2.c
+         a->value = 14, b->value = 15
+      se entra en la funcion ft_sort_dict_f_value del fichero ft_number_dictionary_sort2.c
+         a->value = 15, b->value = 16
+      se entra en la funcion ft_sort_dict_f_value del fichero ft_number_dictionary_sort2.c
+         a->value = 16, b->value = 17
+      se entra en la funcion ft_sort_dict_f_value del fichero ft_number_dictionary_sort2.c
+         a->value = 17, b->value = 18
+      se entra en la funcion ft_sort_dict_f_value del fichero ft_number_dictionary_sort2.c
+         a->value = 18, b->value = 19
+      se entra en la funcion ft_sort_dict_f_value del fichero ft_number_dictionary_sort2.c
+         a->value = 19, b->value = 20
+      se entra en la funcion ft_sort_dict_f_value del fichero ft_number_dictionary_sort2.c
+         a->value = 20, b->value = 30
+      se entra en la funcion ft_sort_dict_f_value del fichero ft_number_dictionary_sort2.c
+         a->value = 30, b->value = 40
+      se entra en la funcion ft_sort_dict_f_value del fichero ft_number_dictionary_sort2.c
+         a->value = 40, b->value = 50
+      se entra en la funcion ft_sort_dict_f_value del fichero ft_number_dictionary_sort2.c
+         a->value = 50, b->value = 60
+      se entra en la funcion ft_sort_dict_f_value del fichero ft_number_dictionary_sort2.c
+         a->value = 60, b->value = 70
+      se entra en la funcion ft_sort_dict_f_value del fichero ft_number_dictionary_sort2.c
+         a->value = 70, b->value = 80
+      se entra en la funcion ft_sort_dict_f_value del fichero ft_number_dictionary_sort2.c
+         a->value = 80, b->value = 90
+      se entra en la funcion ft_sort_dict_f_value del fichero ft_number_dictionary_sort2.c
+         a->value = 90, b->value = 100
+      se entra en la funcion ft_sort_dict_f_value del fichero ft_number_dictionary_sort2.c
+         a->value = 100, b->value = 1000
+      se entra en la funcion ft_sort_dict_f_value del fichero ft_number_dictionary_sort2.c
+         a->value = 1000, b->value = 1000000
+      se entra en la funcion ft_sort_dict_f_value del fichero ft_number_dictionary_sort2.c
+         a->value = 1000000, b->value = 1000000000
+      se entra en la funcion ft_sort_dict_f_value del fichero ft_number_dictionary_sort2.c
+         a->value = 1000000000, b->value = 1000000000000
+      se entra en la funcion ft_sort_dict_f_value del fichero ft_number_dictionary_sort2.c
+         a->value = 1000000000000, b->value = 1000000000000000
+      se entra en la funcion ft_sort_dict_f_value del fichero ft_number_dictionary_sort2.c
+         a->value = 1000000000000000, b->value = 1000000000000000000
+    
+se entra en la funcion ft_do_sort_dict del fichero ft_number_dictionary_sort.c
