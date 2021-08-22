@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itow.c                                          :+:      :+:    :+:   */
+/*   ft_itow                .c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:                                            +#+  +:+       +#+        */
+/*   By: jcuenca <jcuenca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created:                                          #+#    #+#             */
-/*   Updated:                                         ###   ########.fr       */
+/*   Created: 2021/08/08 07:06:00 by jcuenca           #+#    #+#             */
+/*   Updated: 2021/08/08 07:28:00 by jcuenca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	ft_str_write_to(int fd, char *str);
 
-int		ft_resolve_dict_entry_index(t_dict *dict, unsigned long number)
+int	ft_resolve_dict_entry_index(t_dict *dict, unsigned long number)
 {
-    int		index;
+	int	index;
 
 	index = 0;
 	while (index < dict->size)
@@ -30,7 +30,7 @@ int		ft_resolve_dict_entry_index(t_dict *dict, unsigned long number)
 
 int	ft_itow_is_value_power_of_ten(unsigned long number)
 {
-    unsigned long		power;
+	unsigned long	power;
 
 	power = 1;
 	while (power <= number)
@@ -44,12 +44,12 @@ int	ft_itow_is_value_power_of_ten(unsigned long number)
 
 void	ft_itow_print_if(int print, int *put_space, char *str)
 {
-    	if (!print)
+	if (!print)
 		return ;
 	if (*put_space)
 		ft_str_write_to(1, " ");
 	*put_space = 1;
-	ft_str_write_to(1,str);
+	ft_str_write_to(1, str);
 }
 
 int	ft_itow_short(t_dict *dict, unsigned long number, int *put_sp, int prnt)
@@ -63,31 +63,31 @@ int	ft_itow_short(t_dict *dict, unsigned long number, int *put_sp, int prnt)
 	return (1);
 }
 
-int	ft_itow(t_dict *dict, unsigned long number, int *put_space, int print)
+int	ft_itow(t_dict *dict, unsigned long n, int *put_space, int print)
 {
-    int		index;
-	unsigned long	mult;
-	unsigned long	value;
+	int				index;
+	unsigned long	v;
 
-	if ((number <= 20 && ft_itow_short(dict, number, 0, 0))
-			|| (ft_resolve_dict_entry_index(dict, number) != -1
-					&& !ft_itow_is_value_power_of_ten(number)))
-		return (ft_itow_short(dict, number, put_space, print));
+	if ((n <= 20 && ft_itow_short(dict, n, 0, 0))
+		|| (ft_resolve_dict_entry_index(dict, n) != -1
+			&& !ft_itow_is_value_power_of_ten(n)))
+		return (ft_itow_short(dict, n, put_space, print));
 	index = dict->size - 1;
-	while ((value = dict->entries[index].value) != 0)
+	v = dict->entries[index].value;
+	while (v != 0)
 	{
-		if (number % value != number)
+		if (n % v != n)
 		{
-			mult = number / value;
-			if (value > 99)
-				if (!ft_itow(dict, mult, put_space, print))
+			if (v > 99)
+				if (!ft_itow(dict, n / v, put_space, print))
 					return (0);
 			ft_itow_print_if(print, put_space, dict->entries[index].str);
-			if (number - mult * value == 0)
+			if (n - (n / v) * v == 0)
 				return (1);
-			return (ft_itow(dict, number - mult * value, put_space, print));
+			return (ft_itow(dict, n - (n / v) * v, put_space, print));
 		}
 		index--;
+		v = dict->entries[index].value;
 	}
 	return (1);
 }

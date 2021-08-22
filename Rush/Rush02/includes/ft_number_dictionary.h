@@ -12,17 +12,15 @@
 
 #ifndef FT_NUMBER_DICTIONARY_H
 # define FT_NUMBER_DICTIONARY_H
-
-
 # define INVALID -1
 # define ENGLISH_DICT "numbers.dict"
 
 typedef struct	s_dict_entry
 {
 	unsigned long	value;
-	char	*str;
-	int	normal;
-}				t_dict_entry;
+	char			*str;
+	int				normal;
+}					t_dict_entry;
 
 typedef struct	s_dict
 {
@@ -47,6 +45,5 @@ typedef enum
 	failed,
 	reached_eof
 }	t_parse_error;
-
 
 #endif

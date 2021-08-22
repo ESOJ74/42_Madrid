@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:                                            +#+  +:+       +#+        */
+/*   By:             jcuenca <jcuenca@student.42.fr>+#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created:                                          #+#    #+#             */
-/*   Updated:                                         ###   ########.fr       */
+/*   Created: 2021/08/08 07:06:00 by jcuenca           #+#    #+#             */
+/*   Updated: 2021/08/08 07:28:00 by jcuenca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@ t_dict			ft_load_default_dictionary(void);
 t_dict			ft_load_dictionary(char *path);
 void			ft_free_dictionary(t_dict *dict);
 
-void	ft_str_write_to(int fd, char *str);
+void			ft_str_write_to(int fd, char *str);
 unsigned long	ft_atoi(char *str);
-int	ft_itow(t_dict *dict, unsigned long number, int *put_space, int print);
+int				ft_itow(t_dict *dict, unsigned long n, int *sp, int pr);
 
-t_error		process(char *to_convert, t_dict *dict)
+t_error	process(char *to_convert, t_dict *dict)
 {
-    unsigned long	number;
-	int	put_space;
+	unsigned long	number;
+	int				put_space;
 
-    number = ft_atoi(to_convert);
-    if (number == (unsigned long)-1)
+	number = ft_atoi(to_convert);
+	if (number == (unsigned long) - 1)
 		return (invalid_number);
 	if (!ft_itow(dict, number, 0, 0))
 		return (fail_convert);
@@ -38,7 +38,7 @@ t_error		process(char *to_convert, t_dict *dict)
 	return (no_error);
 }
 
-void		show_error(t_error error)
+void	show_error(t_error error)
 {
 	if (error == error_in_dict)
 		ft_str_write_to(2, "Diccionario no válido");
@@ -47,11 +47,11 @@ void		show_error(t_error error)
 	if (error == fail_convert)
 		ft_str_write_to(2, "Error al convertir");
 	if (error == error_in_argv)
-		ft_str_write_to(2, "Argumentos no válidos");			
+		ft_str_write_to(2, "Argumentos no válidos");
 	ft_str_write_to(2, "\n");
 }
 
-t_error		check_argv(int argc, char **argv, char **to_conv, t_dict *dict)
+t_error	check_argv(int argc, char **argv, char **to_conv, t_dict *dict)
 {
 	if (argc == 3)
 	{
@@ -68,7 +68,7 @@ t_error		check_argv(int argc, char **argv, char **to_conv, t_dict *dict)
 	return (no_error);
 }
 
-int			main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_error	error;
 	t_dict	dict;
@@ -82,9 +82,9 @@ int			main(int argc, char **argv)
 	if (error != no_error)
 	{
 		show_error(error);
-		return (1);	
+		return (1);
 	}
-	ft_str_write_to(1, "\n");	
+	ft_str_write_to(1, "\n");
 	ft_free_dictionary(&dict);
 	return (0);
 }

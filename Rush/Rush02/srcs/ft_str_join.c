@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_str_join.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:                                            +#+  +:+       +#+        */
+/*   By:             jcuenca <jcuenca@student.42.fr>+#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created:                                          #+#    #+#             */
-/*   Updated:                                         ###   ########.fr       */
+/*   Created: 2021/08/08 07:06:00 by jcuenca           #+#    #+#             */
+/*   Updated: 2021/08/08 07:28:00 by jcuenca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-int		ft_str_length(char *str)
+int	ft_str_length(char *str)
 {
-    int	index;
+	int	index;
 
 	index = 0;
 	while (str[index])
@@ -24,7 +24,7 @@ int		ft_str_length(char *str)
 
 char	*ft_str_copy(char *dest, char *src)
 {
-    int index;
+	int	index;
 
 	index = 0;
 	while (src[index] != '\0')
@@ -36,9 +36,9 @@ char	*ft_str_copy(char *dest, char *src)
 	return (dest);
 }
 
-int		ft_str_join_get_final_length(char **strings, int size, int sep_length)
+int	ft_str_join_get_final_length(char **strings, int size, int sep_length)
 {
-    int	final_length;
+	int	final_length;
 	int	index;
 
 	final_length = 0;
@@ -55,7 +55,7 @@ int		ft_str_join_get_final_length(char **strings, int size, int sep_length)
 
 char	*ft_str_join(int size, char **strs, char *sep)
 {
-    int		full_length;
+	int		full_length;
 	int		index;
 	char	*read_head;
 	char	*string;
@@ -63,7 +63,8 @@ char	*ft_str_join(int size, char **strs, char *sep)
 	if (size == 0)
 		return ((char *)malloc(sizeof(char)));
 	full_length = ft_str_join_get_final_length(strs, size, ft_str_length(sep));
-	if (!(string = (char *)malloc((full_length + 1) * sizeof(char))))
+	string = (char *)malloc((full_length + 1) * sizeof(char));
+	if (!string)
 		return (0);
 	read_head = string;
 	index = 0;
@@ -71,12 +72,11 @@ char	*ft_str_join(int size, char **strs, char *sep)
 	{
 		ft_str_copy(read_head, strs[index]);
 		read_head += ft_str_length(strs[index]);
-		if (index < size - 1)
+		if (index++ < size - 1)
 		{
 			ft_str_copy(read_head, sep);
 			read_head += ft_str_length(sep);
 		}
-		index++;
 	}
 	*read_head = '\0';
 	return (string);

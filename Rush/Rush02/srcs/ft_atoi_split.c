@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_atoi                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:                                            +#+  +:+       +#+        */
+/*   By: jcuenca <jcuenca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created:                                          #+#    #+#             */
-/*   Updated:                                         ###   ########.fr       */
+/*   Created: 2021/08/08 07:06:00 by jcuenca           #+#    #+#             */
+/*   Updated: 2021/08/08 07:28:00 by jcuenca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-int	ft_is_number(char c)
-{
-	return (c >= '0' && c <= '9');
-}
+int	ft_is_number(char c);
 
 int	ft_is_whitespace(char c)
 {
 	return (c == ' ' || c == '\t' || c == '\n' || c == '\v' || c == '\r'
-			|| c == '\f');
+		|| c == '\f');
 }
 
 unsigned long	ft_atoi(char *str)
 {
-    unsigned long	result;
-    
+	unsigned long	result;
+
 	while (ft_is_whitespace(*str))
 		str++;
 	result = 0;
@@ -41,7 +38,7 @@ unsigned long	ft_atoi(char *str)
 	return (-1);
 }
 
-int		ft_split_whitespace_count_word(char *str)
+int	ft_split_whitespace_count_word(char *str)
 {
 	int		count;
 
@@ -61,7 +58,7 @@ int		ft_split_whitespace_count_word(char *str)
 
 char	*ft_str_n_duplicate(char *str, int n)
 {
-    int		index;
+	int		index;
 	int		length;
 	char	*dup;
 
@@ -70,7 +67,8 @@ char	*ft_str_n_duplicate(char *str, int n)
 		length++;
 	if (length > n)
 		length = n;
-	if (!(dup = malloc((length + 1) * sizeof(char))))
+	dup = malloc((length + 1) * sizeof(char));
+	if (!(dup))
 		return (NULL);
 	index = 0;
 	while (index < length)
@@ -90,7 +88,8 @@ char	**ft_split_whitespace(char *str)
 	char	**array;
 
 	word_count = ft_split_whitespace_count_word(str);
-	if (!(array = malloc((word_count + 1) * sizeof(char *))))
+	array = malloc((word_count + 1) * sizeof(char *));
+	if (!(array))
 		return (NULL);
 	index = 0;
 	while (*str)

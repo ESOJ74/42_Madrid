@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_number_dictionary_io.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:                                            +#+  +:+       +#+        */
+/*   By: jcuenca <jcuenca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created:                                          #+#    #+#             */
-/*   Updated:                                         ###   ########.fr       */
+/*   Created: 2021/08/08 07:06:00 by jcuenca           #+#    #+#             */
+/*   Updated: 2021/08/08 07:28:00 by jcuenca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,22 @@
 #include "ft_number_dictionary.h"
 
 void			ft_read_line(t_dict_entry *entry, int fd, t_parse_error *error);
-char	*ft_str_join(int size, char **strs, char *sep);
-char	*ft_str_n_duplicate(char *src, int n);
-int		ft_str_length(char *str);
+char			*ft_str_join(int size, char **strs, char *sep);
+char			*ft_str_n_duplicate(char *src, int n);
+int				ft_str_length(char *str);
 unsigned long	ft_atoi(char *str);
+char			**ft_split_whitespace(char *str);
+int				ft_open_file(char *path);
+int				ft_close_file(int fd);
 
-int	ft_is_number(char c);
-char	**ft_split_whitespace(char *str);
-
-char	*ft_extend_array(char *orig, char *n_cont, unsigned int old_len, unsigned int len);
-int		ft_open_file(char *path);
-int		ft_close_file(int fd);
-
-
-
-char			*ft_clean_line(char *str)
+int	ft_is_number(char c)
 {
-    int		size;
+	return (c >= '0' && c <= '9');
+}
+
+char	*ft_clean_line(char *str)
+{
+	int		size;
 	char	**split;
 
 	split = ft_split_whitespace(str);
@@ -41,10 +40,11 @@ char			*ft_clean_line(char *str)
 	return (ft_str_join(size, split, " "));
 }
 
-t_parse_error	ft_process_line(t_dict_entry *entry, char *line, unsigned int length)
+t_parse_error	ft_process_line(t_dict_entry *entry, \
+	char *line, unsigned int length)
 {
-    unsigned int	index;
-	char	*number;
+	unsigned int	index;
+	char			*number;
 
 	index = 0;
 	while (ft_is_number(line[index]))
@@ -70,9 +70,9 @@ t_parse_error	ft_process_line(t_dict_entry *entry, char *line, unsigned int leng
 	return (parsing_ok);
 }
 
-int			ft_load_valid_line(char *path, int size, t_dict *dict)
+int	ft_load_valid_line(char *path, int size, t_dict *dict)
 {
-    int				fd;
+	int				fd;
 	int				index;
 	t_dict_entry	*entry;
 	t_parse_error	error;

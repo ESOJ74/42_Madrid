@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_number_dictionary_sort.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:                                            +#+  +:+       +#+        */
+/*   By: jcuenca <jcuenca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created:                                          #+#    #+#             */
-/*   Updated:                                         ###   ########.fr       */
+/*   Created: 2021/08/08 07:06:00 by jcuenca           #+#    #+#             */
+/*   Updated: 2021/08/08 07:28:00 by jcuenca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void	ft_swap_dictionary_entry(t_dict_entry *a, t_dict_entry *b)
 
 void	ft_update_normal_flag(t_dict *dict)
 {
-    int				index;
+	int				index;
 	t_dict_entry	*entry;
-	int			normal;
+	int				normal;
 
 	index = 0;
 	while (index < dict->size)
@@ -39,7 +39,7 @@ void	ft_update_normal_flag(t_dict *dict)
 			normal = 1;
 		if (entry->value > 20 || entry->value < 100)
 			if (entry->value % 10 == 0)
-				normal = 1;	        
+				normal = 1;
 		entry->normal = normal;
 		index++;
 	}
@@ -47,10 +47,10 @@ void	ft_update_normal_flag(t_dict *dict)
 
 void	ft_do_sort_dict(t_dict *dict, int start, int end,
 						int (*func)(t_dict_entry*, t_dict_entry*))
-    {
-    int				index;
+	{
+	int				index;
 	int				jndex;
-	int			swapped;
+	int				swapped;
 	t_dict_entry	*entries;
 
 	entries = dict->entries;
@@ -76,10 +76,10 @@ void	ft_do_sort_dict(t_dict *dict, int start, int end,
 
 void	ft_sort_dictionary(t_dict *dict)
 {
-        int		index;
+	int		index;
 	int		index_of_zero;
 
-	ft_update_normal_flag(dict);	
+	ft_update_normal_flag(dict);
 	ft_do_sort_dict(dict, 0, dict->size - 1, &ft_sort_dict_f_normal);
 	index = 0;
 	index_of_zero = INVALID;
