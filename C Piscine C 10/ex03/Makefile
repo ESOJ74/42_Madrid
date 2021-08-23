@@ -3,118 +3,54 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jcuenca <jcuenca@student.42.fr>            +#+  +:+       +#+         #
+#    By: evgenkarlson <RTFM@42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/08/08 07:06:00 by jcuenca           #+#    #+#              #
-#    Updated: 2021/08/08 07:06:00 by jcuenca          ###   ########.fr        #
+#    Created: 2020/02/14 12:33:14 by evgenkarlson      #+#    #+#              #
+#    Updated: 2020/11/04 01:16:14 by evgenkarlson     ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-C_YELLOW_B=\033[1;33m
-C_LIGHT_RED_B=\033[0;91m
-C_WHITE=\033[0;97m
-C_RESET=\033[0;39m
+NAME := ft_hexdump
+CC := gcc
+CFLAGS := -Wall -Werror -Wextra -c
+LFLAGS	= -Wall -Werror -Wextra -o
+SRC_DIR := ./srcs/
+OBJ_DIR	= ./obj/
+SRC_FILES := ft_atoi.c \
+			 ft_check_base.c \
+			 ft_check_file.c \
+			 ft_display_custom_error.c \
+			 ft_get_strerr.c \
+			 ft_hexdump.c \
+			 ft_putchar.c \
+			 ft_putstr.c \
+			 main.c
+OBJ_FILES = $(SRC_FILES:.c=.o)
+SRCS = $(addprefix $(SRC_DIR), $(SRC_FILES))
+OBJS = $(addprefix $(OBJ_DIR), $(OBJ_FILES))
+HEADER := -I includes/
+RM := rm -rf
 
-SRCS	= ./srcs/ft_args_parser.c ./srcs/ft_console_io.c ./srcs/ft_dumper.c ./srcs/ft_equal_buffer.c ./srcs/ft_file_utils.c ./srcs/ft_file_utils2.c ./srcs/ft_hexdump.c ./srcs/ft_strncpy.c ./srcs/ft_write_number.c ./srcs/main.c
-OBJS	= ${SRCS:.c=.o}
-INCS	= includes
-NAME	= ft_hexdump
-CC		= gcc
-RM		= rm -f
-CFLAGS	= -Wall -Wextra -Werror
+all: obj $(NAME)
 
-.c.o :
-	${CC} ${CFLAGS} -c $< -o ${<:.c=.o} -I${INCS}
+obj: $(SRCS)
+	@mkdir -p $(OBJ_DIR)
 
-${NAME} : ${OBJS}
-	${CC} ${CFLAGS} ${OBJS} -o ${NAME}
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c
+	$(CC) $(CFLAGS) $< -o $@ $(HEADER)
 
-all : ${NAME}
+$(NAME): $(OBJS)
+	$(CC) $(LFLAGS) $(NAME) $(OBJS) $(HEADER)
 
-clean :
-	${RM} ${OBJS}
+clean:
+	$(RM) $(OBJ_DIR)
 
-fclean : clean
-	${RM} ${NAME}
+fclean: clean
+	/bin/rm -f $(NAME)
 
-norm :
-	norminette -R CheckForbiddenSourceHeader */*.[ch]
-	
-test : re
-	@echo "[$(C_YELLOW_B)TESTING$(C_RESET)] $(C_LIGHT_RED_B)[ SHOULD NOT HAVE DIFF ]$(C_RESET) $(C_WHITE)Single file: ./Makefile$(C_RESET)" ;
-	@hexdump ./Makefile | cat -e > result-off.txt ;
-	@./ft_hexdump ./Makefile | cat -e > result-usr.txt ;
-	@git --no-pager diff --no-index result-usr.txt result-off.txt || true ;
-	@##
-	@echo "[$(C_YELLOW_B)TESTING$(C_RESET)] $(C_LIGHT_RED_B)[ SHOULD NOT HAVE DIFF ]$(C_RESET) $(C_WHITE)Single file with -C: ./Makefile$(C_RESET)" ;
-	@hexdump -C ./Makefile | cat -e > result-off.txt ;
-	@./ft_hexdump -C ./Makefile | cat -e > result-usr.txt ;
-	@git --no-pager diff --no-index result-usr.txt result-off.txt || true ;
-	@##
-	@echo "[$(C_YELLOW_B)TESTING$(C_RESET)] $(C_LIGHT_RED_B)[ SHOULD NOT HAVE DIFF ]$(C_RESET) $(C_WHITE)Single file with -C -C: ./Makefile$(C_RESET)" ;
-	@hexdump -C -C ./Makefile | cat -e > result-off.txt ;
-	@./ft_hexdump -C -C ./Makefile | cat -e > result-usr.txt ;
-	@git --no-pager diff --no-index result-usr.txt result-off.txt || true ;
-	@##
-	@echo "[$(C_YELLOW_B)TESTING$(C_RESET)] $(C_LIGHT_RED_B)[ SHOULD NOT HAVE DIFF ]$(C_RESET) $(C_WHITE)STDIN: x < ./Makefile$(C_RESET)" ;
-	@hexdump < ./Makefile | cat -e > result-off.txt ;
-	@./ft_hexdump < ./Makefile | cat -e > result-usr.txt ;
-	@git --no-pager diff --no-index result-usr.txt result-off.txt || true ;
-	@##
-	@echo "[$(C_YELLOW_B)TESTING$(C_RESET)] $(C_LIGHT_RED_B)[ SHOULD NOT HAVE DIFF ]$(C_RESET) $(C_WHITE)Multiple file: ./Makefile ./Makefile$(C_RESET)" ;
-	@hexdump ./Makefile ./Makefile | cat -e > result-off.txt ;
-	@./ft_hexdump ./Makefile ./Makefile | cat -e > result-usr.txt ;
-	@git --no-pager diff --no-index result-usr.txt result-off.txt || true ;
-	@##
-	@echo "[$(C_YELLOW_B)TESTING$(C_RESET)] $(C_LIGHT_RED_B)[ SHOULD NOT HAVE DIFF ]$(C_RESET) $(C_WHITE)Multiple file with -C: ./Makefile ./Makefile$(C_RESET)" ;
-	@hexdump -C ./Makefile ./Makefile | cat -e > result-off.txt ;
-	@./ft_hexdump -C ./Makefile ./Makefile | cat -e > result-usr.txt ;
-	@git --no-pager diff --no-index result-usr.txt result-off.txt || true ;
-	@##
-	@echo "[$(C_YELLOW_B)TESTING$(C_RESET)] $(C_LIGHT_RED_B)[ SHOULD NOT HAVE DIFF ]$(C_RESET) $(C_WHITE)Multiple file with -C -C: ./Makefile ./Makefile$(C_RESET)" ;
-	@hexdump -C -C ./Makefile ./Makefile | cat -e > result-off.txt ;
-	@./ft_hexdump -C -C ./Makefile ./Makefile | cat -e > result-usr.txt ;
-	@git --no-pager diff --no-index result-usr.txt result-off.txt || true ;
-	@##
-	@echo "[$(C_YELLOW_B)TESTING$(C_RESET)] $(C_LIGHT_RED_B)[ MUST HAVE DIFF       ]$(C_RESET) $(C_WHITE)Invalid file: ./a$(C_RESET)" ;
-	@hexdump -C -C ./a > out 2>result-off.txt || true ;
-	@./ft_hexdump -C -C ./a > out 2>result-usr.txt || true ;
-	@git --no-pager diff --no-index result-usr.txt result-off.txt || true ;
-	@##
-	@echo "[$(C_YELLOW_B)TESTING$(C_RESET)] $(C_LIGHT_RED_B)[ MUST HAVE DIFF       ]$(C_RESET) $(C_WHITE)Valid and invalid file: ./Makefile ./a ./Makefile$(C_RESET)" ;
-	@hexdump ./Makefile ./a ./Makefile > out 2>result-off.txt || true ;
-	@./ft_hexdump ./Makefile ./a ./Makefile > out 2>result-usr.txt || true ;
-	@git --no-pager diff --no-index result-usr.txt result-off.txt || true ;
-	@##
-	@echo "[$(C_YELLOW_B)TESTING$(C_RESET)] $(C_LIGHT_RED_B)[ MUST HAVE DIFF       ]$(C_RESET) $(C_WHITE)Only invalid file: ./a ./b ./c$(C_RESET)" ;
-	@hexdump ./a ./b ./c > out 2>result-off.txt || true ;
-	@./ft_hexdump ./a ./b ./c > out 2>result-usr.txt || true ;
-	@git --no-pager diff --no-index result-usr.txt result-off.txt || true ;
-	@##
-	@echo "[$(C_YELLOW_B)TESTING$(C_RESET)] $(C_LIGHT_RED_B)[ MUST HAVE DIFF       ]$(C_RESET) $(C_WHITE)On directory: ./srcs/$(C_RESET)" ;
-	@hexdump ./srcs/ > out 2>result-off.txt || true ;
-	@./ft_hexdump ./srcs/ > out 2>result-usr.txt || true ;
-	@git --no-pager diff --no-index result-usr.txt result-off.txt || true ;
-	@##
-	@echo "[$(C_YELLOW_B)TESTING$(C_RESET)] $(C_LIGHT_RED_B)[ MUST HAVE DIFF       ]$(C_RESET) $(C_WHITE)On 2 directory: ./srcs/ ./srcs/$(C_RESET)" ;
-	@hexdump ./srcs/ ./srcs/ > out 2>result-off.txt || true ;
-	@./ft_hexdump ./srcs/ ./srcs/ > out 2>result-usr.txt || true ;
-	@git --no-pager diff --no-index result-usr.txt result-off.txt || true ;
-	@##
-	@echo "[$(C_YELLOW_B)TESTING$(C_RESET)] $(C_LIGHT_RED_B)[ MUST HAVE DIFF       ]$(C_RESET) $(C_WHITE)Illegal argument: -a$(C_RESET)" ;
-	@hexdump -a > out 2>result-off.txt || true ;
-	@./ft_hexdump -a > out 2>result-usr.txt || true ;
-	@git --no-pager diff --no-index result-usr.txt result-off.txt || true ;
-	@##
-	@echo "[$(C_YELLOW_B)TESTING$(C_RESET)] $(C_LIGHT_RED_B)[ MUST HAVE DIFF       ]$(C_RESET) $(C_WHITE)Read only file: read_only.txt$(C_RESET)" ;
-	@echo "Hey! This file is supposed to not be redeable..." > read_only.txt
-	@chmod -xrw read_only.txt
-	@hexdump read_only.txt > out 2>result-off.txt || true ;
-	@./ft_hexdump read_only.txt > out 2>result-usr.txt || true ;
-	@git --no-pager diff --no-index result-usr.txt result-off.txt || true ;
-	@##
-	@rm -f result-off.txt result-usr.txt out read_only.txt;
+re: fclean all
 
-re : fclean all
+.PHONY: all clean fclean re
 
-.PHONY: all clean fclean re .c.o test
+#norm :
+#	norminette -R CheckForbiddenSourceHeader */*.[ch]

@@ -3,20 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcuenca <jcuenca@student.42.fr>            +#+  +:+       +#+        */
+/*   By: evgenkarlson <RTFM@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/08 07:06:00 by jcuenca           #+#    #+#             */
-/*   Updated: 2021/08/08 07:28:00 by jcuenca          ###   ########.fr       */
+/*   Created: 2020/02/14 12:33:14 by evgenkarlson      #+#    #+#             */
+/*   Updated: 2020/11/07 23:31:26 by evgenkarlson     ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-
-#include "ft_args_parser.h"
+#include "../includes/ft_lib.h"
 
 int		main(int argc, char **argv)
 {
-	if (!parse_args(argv, argc))
-		return (1);
+	ft_hexdump(argc, argv);
 	return (0);
 }
